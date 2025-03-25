@@ -2,11 +2,13 @@
   hosts: local-machines
   become: true
   roles:
+    - python3
     - git
     - ssh
     - tmux
     - fish
     - bw
+    - ansible
   tasks:
     - name: Print message
       ansible.builtin.debug:

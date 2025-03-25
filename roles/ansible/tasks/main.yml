@@ -1,0 +1,6 @@
+- name: Install Ansible
+  community.general.pipx:
+    name: "{{ item }}"
+  with_items:
+    - "ansible"
+    - "ansible-lint"
