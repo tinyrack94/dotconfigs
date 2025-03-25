@@ -1,0 +1,9 @@
+- name: Setup fish shell ppa
+  ansible.builtin.apt_repository:
+    repo: "ppa:fish-shell/release-4"
+    state: present
+
+- name: Install fish shell
+  ansible.builtin.apt:
+    name: fish
+    state: present

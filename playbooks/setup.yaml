@@ -1,9 +1,11 @@
 - name: Setup Development Environment
   hosts: local
+  become: true
   roles:
     - git
     - ssh
     - tmux
+    - fish
   tasks:
     - name: Print message
       ansible.builtin.debug:
