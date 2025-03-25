@@ -1,3 +1,4 @@
 roles_galaxy/*
 collections/*
 .vault_pass
+.become_pass
