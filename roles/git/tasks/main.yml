@@ -1,0 +1,11 @@
+- name: Install git
+  ansible.builtin.apt:
+    name: git
+
+- name: Copy gitconfig
+  ansible.builtin.copy:
+    src: gitconfig
+    dest: ~/.gitconfig
+    owner: "{{ lookup('ansible.builtin.env', 'USER') }}"
+    group: "{{ lookup('ansible.builtin.env', 'USER') }}"
+    mode: '0644'

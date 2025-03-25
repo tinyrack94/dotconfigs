@@ -1,0 +1,10 @@
+all:
+  children:
+    local:
+      hosts:
+        localhost:
+          ansible_connection: local
+    remote:
+      hosts:
+        192.0.2.50:
+          ansible_user: ubuntu
