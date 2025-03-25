@@ -1,0 +1,3 @@
+- name: Install zsh
+  ansible.builtin.apt:
+    name: git

@@ -2,6 +2,7 @@
   hosts: local-machines
   become: true
   roles:
+    - update
     - python3
     - git
     - ssh
@@ -23,6 +24,7 @@
     - ansible
     - kubectl
     - nvim
+    - zsh
     - role: node
       vars:
         node_version: "20.19.0"

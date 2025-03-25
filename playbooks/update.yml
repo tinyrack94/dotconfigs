@@ -1,5 +1,5 @@
 - name: Update dependencies
   become: true
-  hosts: local-machines
+  hosts: dev-machines
   roles:
     - update
