@@ -1,12 +1,15 @@
 - name: Setup Development Environment
-  hosts: local
+  hosts: local-machines
   become: true
   roles:
     - git
     - ssh
     - tmux
     - fish
+    - bw
   tasks:
     - name: Print message
       ansible.builtin.debug:
-        msg: Done!
+        msg: |
+          user: {{ lookup('ansible.builtin.env', 'USER') }}
+          home: {{ lookup('ansible.builtin.env', 'HOME') }}

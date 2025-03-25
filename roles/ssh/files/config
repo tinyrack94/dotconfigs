@@ -1,0 +1,9 @@
+Host dev-ubuntu
+  HostName 10.132.245.29
+  User winetree94
+  IdentityFile ~/.ssh/winetree94_id_rsa
+
+Host dev-debian
+  HostName 10.132.245.28
+  User winetree94
+  IdentityFile ~/.ssh/winetree94_id_rsa

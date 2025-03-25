@@ -7,3 +7,16 @@
   ansible.builtin.apt:
     name: fish
     state: present
+
+- name: Setup default shell
+  ansible.builtin.user:
+    name: "{{ lookup('ansible.builtin.env', 'USER') }}"
+    shell: /usr/bin/fish
+
+- name: Copy configurations
+  ansible.builtin.template:
+    src: config.fish.j2
+    dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config/fish/config.fish"
+    owner: "{{ lookup('ansible.builtin.env', 'USER') }}"
+    group: "{{ lookup('ansible.builtin.env', 'USER') }}"
+    mode: '0644'

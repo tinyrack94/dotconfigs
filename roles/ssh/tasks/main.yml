@@ -1,3 +1,11 @@
-#SPDX-License-Identifier: MIT-0
----
-# tasks file for ssh
+- name: Setup ssh
+  ansible.builtin.copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    owner: "{{ lookup('ansible.builtin.env', 'USER') }}"
+    group: "{{ lookup('ansible.builtin.env', 'USER') }}"
+    mode: '0600'
+  with_items:
+    - { src: "winetree94_id_rsa", dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.ssh/winetree94_id_rsa" }
+    - { src: "winetree94_id_rsa.pub", dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.ssh/winetree94_id_rsa.pub" }
+    - { src: "config", dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.ssh/config" }

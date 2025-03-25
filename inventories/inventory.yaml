@@ -1,10 +1,18 @@
 all:
   children:
-    local:
-      hosts:
-        localhost:
-          ansible_connection: local
-    remote:
-      hosts:
-        192.0.2.50:
-          ansible_user: ubuntu
+    local-machines:
+    dev-machines:
+
+local-machines:
+  hosts:
+    localhost:
+      ansible_connection: local
+
+dev-machines:
+  hosts:
+    # dev-ubuntu
+    # 10.132.245.29:
+    #   ansible_user: winetree94
+    # dev-debian
+    10.132.245.28:
+      ansible_user: winetree94
