@@ -13,7 +13,13 @@
     name: "{{ lookup('ansible.builtin.env', 'USER') }}"
     shell: /usr/bin/fish
 
-- name: Copy configurations
+- name: Install fish config
+  ansible.posix.synchronize:
+    src: "fish"
+    dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config/"
+    recursive: true
+
+- name: Copy config
   ansible.builtin.template:
     src: config.fish.j2
     dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config/fish/config.fish"
