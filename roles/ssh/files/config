@@ -7,3 +7,18 @@ Host dev-debian
   HostName 10.132.245.28
   User winetree94
   IdentityFile ~/.ssh/winetree94_id_rsa
+
+Host k3s-1
+  HostName 10.132.247.41
+  User k3s
+  IdentityFile ~/.ssh/winetree94_id_rsa
+
+Host k3s-2
+  HostName 10.132.247.42
+  User k3s
+  IdentityFile ~/.ssh/winetree94_id_rsa
+
+Host k3s-3
+  HostName 10.132.247.43
+  User k3s
+  IdentityFile ~/.ssh/winetree94_id_rsa
