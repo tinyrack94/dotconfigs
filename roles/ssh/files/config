@@ -22,3 +22,13 @@ Host k3s-3
   HostName 10.132.247.43
   User k3s
   IdentityFile ~/.ssh/winetree94_id_rsa
+
+Host discourse
+  HostName 10.132.245.33
+  User winetree94
+  IdentityFile ~/.ssh/winetree94_id_rsa
+
+Host test-ubuntu
+  HostName 10.132.247.98
+  User winetree94
+  IdentityFile ~/.ssh/winetree94_id_rsa

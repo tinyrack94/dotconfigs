@@ -22,7 +22,9 @@
     mode: '0700'
 
 - name: Install Nvim Config
-  ansible.posix.synchronize:
+  ansible.builtin.copy:
     src: "nvim"
     dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config/"
-    recursive: true
+    owner: "{{ lookup('ansible.builtin.env', 'USER') }}"
+    group: "{{ lookup('ansible.builtin.env', 'USER') }}"
+    mode: '0644'

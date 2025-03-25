@@ -14,5 +14,9 @@ dev-machines:
     # 10.132.245.29:
     #   ansible_user: winetree94
     # dev-debian
-    10.132.245.28:
+    # 10.132.245.28:
+    #   ansible_user: winetree94
+    # test
+    test-ubuntu:
       ansible_user: winetree94
+

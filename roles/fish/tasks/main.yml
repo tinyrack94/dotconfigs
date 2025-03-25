@@ -1,3 +1,7 @@
+- name: Update cache
+  ansible.builtin.apt:
+    update_cache: true
+
 - name: Setup fish shell ppa
   ansible.builtin.apt_repository:
     repo: "ppa:fish-shell/release-4"
@@ -14,10 +18,12 @@
     shell: /usr/bin/fish
 
 - name: Install fish config
-  ansible.posix.synchronize:
+  ansible.builtin.copy:
     src: "fish"
     dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config/"
-    recursive: true
+    owner: "{{ lookup('ansible.builtin.env', 'USER') }}"
+    group: "{{ lookup('ansible.builtin.env', 'USER') }}"
+    mode: '0755'
 
 - name: Copy config
   ansible.builtin.template:
