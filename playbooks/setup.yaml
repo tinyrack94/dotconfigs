@@ -26,6 +26,7 @@
     - role: node
       vars:
         node_version: "20.19.0"
+    - geerlingguy.docker
   tasks:
     - name: Print message
       ansible.builtin.debug:
