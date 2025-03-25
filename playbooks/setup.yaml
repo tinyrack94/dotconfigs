@@ -9,6 +9,8 @@
     - fish
     - bw
     - ansible
+    - kubectl
+    - nvim
   tasks:
     - name: Print message
       ansible.builtin.debug:

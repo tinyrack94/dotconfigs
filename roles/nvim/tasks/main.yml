@@ -1,0 +1,30 @@
+# - name: Install Snap Dependencies
+#   community.general.snap:
+#     name: "{{ item }}"
+#     state: present
+#     classic: true
+#   with_items:
+#     - ripgrep
+#     - lazygit-gm
+#     - gdu-disk-usage-analyzer
+#     - bottom
+
+- name: Install Neovim
+  community.general.snap:
+    name: nvim
+    classic: true
+    state: present
+
+- name: Setup config dir
+  ansible.builtin.file:
+    path: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config"
+    state: directory
+    owner: "{{ lookup('ansible.builtin.env', 'USER') }}"
+    group: "{{ lookup('ansible.builtin.env', 'USER') }}"
+    mode: '0700'
+
+- name: Install Nvim Config
+  ansible.posix.synchronize:
+    src: "nvim"
+    dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config/"
+    recursive: true

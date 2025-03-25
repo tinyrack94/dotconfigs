@@ -1,0 +1,21 @@
+- name: Setup Kubectl Dir
+  ansible.builtin.file:
+    path: "{{ lookup('ansible.builtin.env', 'HOME') }}/.kube"
+    state: directory
+    owner: "{{ lookup('ansible.builtin.env', 'USER') }}"
+    group: "{{ lookup('ansible.builtin.env', 'USER') }}"
+    mode: '0700'
+
+- name: Copy Kubectl Config
+  ansible.builtin.copy:
+    src: "k3s.yaml"
+    dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.kube/k3s.yaml"
+    owner: "{{ lookup('ansible.builtin.env', 'USER') }}"
+    group: "{{ lookup('ansible.builtin.env', 'USER') }}"
+    mode: '0644'
+
+- name: Install Kubectl
+  community.general.snap:
+    name: kubectl
+    classic: true
+    state: present
