@@ -1,7 +1,3 @@
-Host *
-  User winetree94
-  IdentityFile ~/.ssh/winetree94_id_rsa
-
 Host tailscale
   HostName 10.132.245.26
   User root
@@ -65,3 +61,25 @@ Host discourse
 
 Host test-ubuntu
   HostName 10.132.247.98
+
+Host docker
+  HostName 10.132.245.34
+
+Host proxmox-firewall
+  HostName 10.63.196.2
+  User root
+
+Host proxmox-main
+  HostName 10.132.244.24
+  User root
+
+Host openmediavault
+  HostName 10.132.245.8
+
+Host macmini
+  HostName 10.132.245.23
+
+Host *
+  User winetree94
+  IdentityFile ~/.ssh/winetree94_id_rsa
+
