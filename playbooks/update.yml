@@ -1,5 +1,5 @@
 - name: Update dependencies
-  become: true
-  hosts: dev-machines
+  become: "{{ lookup('ansible.builtin.env', 'USER') != 'root' }}"
+  hosts: all-debian-based
   roles:
     - update
