@@ -3,7 +3,7 @@
     path: "{{ lookup('ansible.builtin.env', 'HOME') }}/.local/share/nvm/v{{ node_version }}"
   register: check_node_result
 
-- name: Install Node 20
+- name: Install Node
   ansible.builtin.command: |
     fish -l -c 'source {{ lookup('ansible.builtin.env', 'HOME') }}/.config/fish/config.fish && \
     nvm install {{ node_version }} && \

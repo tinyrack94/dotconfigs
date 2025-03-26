@@ -1,7 +1,13 @@
-- name: Install tmux
+- name: Uninstall apt tmux
   ansible.builtin.apt:
     name: tmux
     state: present
+
+- name: Install tmux
+  community.general.homebrew:
+    name: tmux
+    state: absent
+  become: false
 
 - name: Install tmux conf
   ansible.builtin.copy:

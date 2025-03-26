@@ -1,0 +1,29 @@
+- name: Install required dependencies
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - curl
+    - git
+    - build-essential
+
+- name: Checking brew install
+  ansible.builtin.stat:
+    path: /home/linuxbrew/.linuxbrew/bin
+  register: brew_check
+
+- name: Download Linuxbrew installation script
+  ansible.builtin.get_url:
+    url: https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
+    dest: /tmp/brew_install.sh
+    mode: '0755'
+  when: not (brew_check.stat.exists and brew_check.stat.isdir)
+
+- name: Install Linuxbrew
+  ansible.builtin.command: /tmp/brew_install.sh
+  environment:
+    NONINTERACTIVE: "1"
+  become: false
+  register: brew_install_result
+  changed_when: "'Installation successful!' in brew_install_result.stdout"
+  when: not (brew_check.stat.exists and brew_check.stat.isdir)

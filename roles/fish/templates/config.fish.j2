@@ -1,3 +1,5 @@
+set -g fish_greeting
+
 if status is-interactive
     # Commands to run in interactive sessions can go here
 end
@@ -7,8 +9,8 @@ set -x PATH ~/.local/bin $PATH
 
 # kubernetes configs
 set -x KUBECONFIG ~/.kube/k3s.yaml
-
 set -x BW_SESSION "{{ fish_bw_session }}"
-set -x nvm_default_version {{ node_version }}
 
 kubectl completion fish | source
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"

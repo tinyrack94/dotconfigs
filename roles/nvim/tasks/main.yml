@@ -7,11 +7,14 @@
     - ripgrep
     - gdu
 
-- name: Install Neovim
-  community.general.snap:
-    name: nvim
-    classic: true
+- name: Install Lazygit
+  community.general.homebrew:
+    name: "{{ item }}"
     state: present
+  become: false
+  with_items:
+    - lazygit
+    - neovim
 
 - name: Setup config dir
   ansible.builtin.file:
