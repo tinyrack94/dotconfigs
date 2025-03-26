@@ -1,6 +1,7 @@
 - name: Install git
   ansible.builtin.apt:
     name: git
+    state: present
 
 - name: Copy gitconfig
   ansible.builtin.copy:
