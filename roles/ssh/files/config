@@ -79,6 +79,9 @@ Host openmediavault
 Host macmini
   HostName 10.132.245.23
 
+Host desktop
+  HostName 10.132.247.31
+
 Host *
   User winetree94
   IdentityFile ~/.ssh/winetree94_id_rsa

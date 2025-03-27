@@ -1,12 +1,19 @@
-- name: Setup ssh dir
+- name: Create .ssh directory (Posix)
   ansible.builtin.file:
     path: "{{ lookup('ansible.builtin.env', 'HOME') }}/.ssh"
     state: directory
     owner: "{{ lookup('ansible.builtin.env', 'USER') }}"
     group: "{{ lookup('ansible.builtin.env', 'USER') }}"
     mode: '0700'
+  when: ansible_facts['os_family'] != 'Windows'
 
-- name: Setup ssh
+- name: Create .ssh directory (Windows)
+  ansible.windows.win_file:
+    path: "{{ lookup('env', 'USERPROFILE') }}\\.ssh"
+    state: directory
+  when: ansible_facts['os_family'] == 'Windows'
+
+- name: Setup Config (Posix)
   ansible.builtin.copy:
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
@@ -17,3 +24,14 @@
     - { src: "winetree94_id_rsa", dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.ssh/winetree94_id_rsa" }
     - { src: "winetree94_id_rsa.pub", dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.ssh/winetree94_id_rsa.pub" }
     - { src: "config", dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.ssh/config" }
+  when: ansible_facts['os_family'] != 'Windows'
+
+- name: Setup Config (Windows)
+  ansible.windows.win_copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  with_items:
+    - { src: "winetree94_id_rsa", dest: "{{ lookup('env', 'USERPROFILE') }}\\.ssh\\winetree94_id_rsa" }
+    - { src: "winetree94_id_rsa.pub", dest: "{{ lookup('env', 'USERPROFILE') }}\\.ssh\\winetree94_id_rsa.pub" }
+    - { src: "config", dest: "{{ lookup('env', 'USERPROFILE') }}\\.ssh\\config" }
+  when: ansible_facts['os_family'] == 'Windows'

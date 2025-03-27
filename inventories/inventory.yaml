@@ -32,6 +32,11 @@ remote-dev-machines:
       3336633335303437310a653730343332393934633538393335643937343362356664333337623662
       3438
 
+# Windows Machines
+windows-machines:
+  hosts:
+    desktop:
+
 # Ubuntu LXC Containers
 ubuntu-lxc-machines:
   hosts:
