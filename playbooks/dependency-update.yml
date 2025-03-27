@@ -2,4 +2,4 @@
   become: "{{ lookup('ansible.builtin.env', 'USER') != 'root' }}"
   hosts: all-debian-based
   roles:
-    - update
+    - apt-update
