@@ -12,4 +12,3 @@ set -x KUBECONFIG ~/.kube/k3s.yaml
 
 kubectl completion fish | source
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
