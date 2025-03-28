@@ -9,7 +9,6 @@ set -x PATH ~/.local/bin $PATH
 
 # kubernetes configs
 set -x KUBECONFIG ~/.kube/k3s.yaml
-set -x BW_SESSION "{{ fish_bw_session }}"
 
 kubectl completion fish | source
 

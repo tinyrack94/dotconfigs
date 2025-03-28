@@ -27,8 +27,8 @@
 
 - name: Copy config
   ansible.builtin.template:
-    src: config.fish.j2
-    dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config/fish/config.fish"
+    src: conf.d/bitwarden.fish.j2
+    dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config/fish/conf.d/bitwarden.fish"
     owner: "{{ lookup('ansible.builtin.env', 'USER') }}"
     group: "{{ lookup('ansible.builtin.env', 'USER') }}"
     mode: '0644'
