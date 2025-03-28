@@ -30,6 +30,7 @@
       vars:
         node_version: "20.19.0"
     - geerlingguy.docker
+    - dotconfig
   tasks:
     - name: Print message
       ansible.builtin.debug:
