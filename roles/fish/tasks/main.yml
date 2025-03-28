@@ -2,6 +2,16 @@
   ansible.builtin.apt:
     update_cache: true
 
+- name: Install Lazygit
+  community.general.homebrew:
+    name: "{{ item }}"
+    state: present
+  become: false
+  with_items:
+    - fzf
+    - fd
+    - bat
+
 - name: Setup fish shell ppa
   ansible.builtin.apt_repository:
     repo: "ppa:fish-shell/release-4"
