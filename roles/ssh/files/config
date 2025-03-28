@@ -82,6 +82,10 @@ Host macmini
 Host desktop
   HostName 10.132.247.31
 
+Host github.com
+  HostName github.com
+  User git
+
 Host *
   User winetree94
   IdentityFile ~/.ssh/winetree94_id_rsa
