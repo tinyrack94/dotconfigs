@@ -2,7 +2,7 @@
   hosts: local-machines
   become: true
   roles:
-    - update
+    - apt-update
     - python3
     - git
     - role: fish
