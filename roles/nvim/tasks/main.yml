@@ -1,4 +1,4 @@
-- name: Install Dependencies (APT)
+- name: Install Dependencies (APT) 
   ansible.builtin.apt:
     name: "{{ item }}"
     state: present
@@ -15,10 +15,31 @@
   become: false
   with_items:
     - lazygit
-    - neovim
+    # - neovim
     - lua
     - luarocks
     - luajit
+
+- name: Download
+  ansible.builtin.get_url:
+    url: https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
+    dest: /tmp/nvim.tar.gz
+    mode: '0644'
+
+- name: Create directories
+  ansible.builtin.file:
+    path: "{{ lookup('ansible.builtin.env', 'HOME') }}/{{ item }}"
+    state: directory
+    mode: '0744'
+    owner: "{{ lookup('ansible.builtin.env', 'USER') }}"
+    group: "{{ lookup('ansible.builtin.env', 'USER') }}"
+  with_items: 
+    - .apps
+
+- name: Extract
+  ansible.builtin.unarchive:
+    src: /tmp/nvim.tar.gz
+    dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.apps"
 
 - name: Setup config dir
   ansible.builtin.file:
@@ -35,3 +56,4 @@
     owner: "{{ lookup('ansible.builtin.env', 'USER') }}"
     group: "{{ lookup('ansible.builtin.env', 'USER') }}"
     mode: '0644'
+
