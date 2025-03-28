@@ -16,6 +16,9 @@
   with_items:
     - lazygit
     - neovim
+    - lua
+    - luarocks
+    - luajit
 
 - name: Setup config dir
   ansible.builtin.file:
