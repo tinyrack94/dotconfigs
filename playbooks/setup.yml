@@ -4,8 +4,9 @@
   become: true
   roles:
     - apt-update
-    - snap
-    - homebrew
+    - setup-snap
+    - setup-flatpak
+    - setup-homebrew
     - rust
     - python3
     - git

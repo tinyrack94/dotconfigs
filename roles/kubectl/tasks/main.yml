@@ -19,3 +19,4 @@
     name: kubectl
     classic: true
     state: present
+
