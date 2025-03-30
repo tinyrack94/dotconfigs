@@ -4,12 +4,23 @@
 install requirements
 
 ```bash
-ansible-galaxy role install --role-file ./requirement.yaml
+ansible-galaxy role install --role-file ./requirement.yaml --force
 ```
 
 
 # Supported Targets
 
 - Ubuntu 24.04
-- Debian 12
+
+# Requirements
+
+- .vault_pass: password for ansible vault
+
+
+# Apply
+
+```bash
+ansible-playbook ./playbooks/setup.yml
+```
+
 
