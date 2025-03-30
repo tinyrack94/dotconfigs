@@ -32,7 +32,10 @@
     - role: node
       vars:
         node_version: "20.19.0"
-    - geerlingguy.docker
+    - role: geerlingguy.docker
+      vars:
+        docker_users:
+          - "{{ lookup('ansible.builtin.env', 'USER') }}"
     - dotconfig
   tasks:
     - name: Print message
