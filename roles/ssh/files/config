@@ -75,6 +75,7 @@ Host proxmox-main
 
 Host openmediavault
   HostName 10.132.245.8
+  User root
 
 Host macmini
   HostName 10.132.245.23
