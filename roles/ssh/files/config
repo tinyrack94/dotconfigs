@@ -81,7 +81,6 @@ Host macmini
 
 Host mail-server
   HostName 65.109.167.156
-  User root
 
 Host desktop
   HostName 10.132.247.31
