@@ -54,11 +54,11 @@ Host docker
   HostName docker.server.lan
 
 Host proxmox-firewall
-  HostName 10.63.196.2
+  HostName proxmox-firewall.server.lan
   User root
 
 Host proxmox-main
-  HostName 10.132.244.24
+  HostName proxmox-main.server.lan
   User root
 
 Host openmediavault
