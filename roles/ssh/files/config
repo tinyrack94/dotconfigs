@@ -1,69 +1,57 @@
 Host tailscale
-  HostName 10.132.245.26
+  HostName tailscale.server.lan
   User root
 
 Host adguard
-  HostName 10.132.245.5
+  HostName adguard.server.lan
   User root
 
 Host private-nginx
-  HostName 10.132.245.17
+  HostName private-nginx.server.lan
   User root 
 
 Host public-nginx
-  HostName 10.132.245.2
+  HostName public-nginx.server.lan
   User root
 
 Host davinci-resolve
-  HostName 10.132.245.31
+  HostName davinci-resolve.server.lan
   User root
 
 Host guacamole
-  HostName 10.132.245.6
-  User root
-
-Host minecraft-java
-  HostName 10.132.245.20
-  User root
-
-Host vaultwarden
-  HostName 10.132.245.7
-  User root
-
-Host minecraft
-  HostName 10.132.245.19
+  HostName guacamole.server.lan
   User root
 
 Host nextcloud
-  HostName 10.132.245.3
+  HostName nextcloud.server.lan
   User root
 
 Host dev-ubuntu
-  HostName 10.132.245.29
+  HostName dev-ubuntu.server.lan
 
 Host dev-debian
-  HostName 10.132.245.28
+  HostName dev-debian.server.lan
 
 Host k3s-1
-  HostName 10.132.247.41
+  HostName k3s-1.server.lan
   User k3s
 
 Host k3s-2
-  HostName 10.132.247.42
+  HostName k3s-2.server.lan
   User k3s
 
 Host k3s-3
-  HostName 10.132.247.43
+  HostName k3s-3.server.lan
   User k3s
 
 Host discourse
-  HostName 10.132.245.33
+  HostName discourse.server.lan
 
 Host test-ubuntu
   HostName 10.132.247.98
 
 Host docker
-  HostName 10.132.245.34
+  HostName docker.server.lan
 
 Host proxmox-firewall
   HostName 10.63.196.2
@@ -74,16 +62,22 @@ Host proxmox-main
   User root
 
 Host openmediavault
-  HostName 10.132.245.8
+  HostName openmediavault.server.lan
 
 Host macmini
   HostName 10.132.245.23
 
-Host mail-server
-  HostName 65.109.167.156
+Host headscale
+  HostName headscale.server.lan
 
-Host desktop
-  HostName 10.132.247.31
+Host desktop.server.lan
+  HostName desktop.server.lan
+
+Host mail.winetree94.com
+  HostName mail.winetree94.com
+
+Host vpn.winetree94.com
+  HostName vpn.winetree94.com
 
 Host github.com
   HostName github.com
@@ -92,4 +86,3 @@ Host github.com
 Host *
   User winetree94
   IdentityFile ~/.ssh/winetree94_id_rsa
-
