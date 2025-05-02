@@ -1,5 +1,1 @@
-roles:
-  - name: geerlingguy.docker
-    version: "7.4.7"
-
 collections: [ 'ansible.windows', 'ansible.posix', 'community.general' ]

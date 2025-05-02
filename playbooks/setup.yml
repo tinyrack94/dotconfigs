@@ -25,7 +25,7 @@
           6637
     - ssh
     - tmux
-    # - bw
+    - bw
     - ansible
     - kubectl
     - nvim
@@ -33,10 +33,7 @@
     - role: node
       vars:
         node_version: "20.19.0"
-    - role: geerlingguy.docker
-      vars:
-        docker_users:
-          - "{{ lookup('ansible.builtin.env', 'USER') }}"
+    - docker
     - dotconfig
   tasks:
     - name: Print message

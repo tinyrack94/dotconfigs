@@ -12,11 +12,11 @@
     - fd
     - bat
 
-- name: Setup fish shell ppa (Ubuntu)
-  ansible.builtin.apt_repository:
-    repo: "ppa:fish-shell/release-4"
-    state: present
-  when: ansible_facts['distribution'] == 'Ubuntu'
+# - name: Setup fish shell ppa (Ubuntu)
+#   ansible.builtin.apt_repository:
+#     repo: "ppa:fish-shell/release-4"
+#     state: present
+#   when: ansible_facts['distribution'] == 'Ubuntu'
 
 # - name: Add Fish repo to APT sources list
 #   ansible.builtin.copy:
@@ -77,4 +77,3 @@
     owner: "{{ lookup('ansible.builtin.env', 'USER') }}"
     group: "{{ lookup('ansible.builtin.env', 'USER') }}"
     mode: '0644'
-

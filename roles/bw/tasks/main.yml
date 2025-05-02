@@ -1,5 +1,5 @@
 - name: Install bitwarden
   community.general.snap:
-    name: bitwarden
+    name: bw
     classic: true
     state: present
