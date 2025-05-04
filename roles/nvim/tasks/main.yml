@@ -1,4 +1,4 @@
-- name: Install Dependencies (APT) 
+- name: Install Dependencies (APT)
   ansible.builtin.apt:
     name: "{{ item }}"
     state: present
@@ -20,6 +20,7 @@
     - luarocks
     - luajit
 
+
 - name: Setup config dir
   ansible.builtin.file:
     path: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config"
@@ -29,9 +30,16 @@
     mode: '0700'
 
 - name: Install Nvim Config
-  ansible.posix.synchronize:
+  ansible.builtin.copy:
     src: "nvim"
-    dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config"
-    recursive: true
-    delete: true
+    dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config/"
+    owner: "{{ lookup('ansible.builtin.env', 'USER') }}"
+    group: "{{ lookup('ansible.builtin.env', 'USER') }}"
+    mode: '0755'
 
+# - name: Install Nvim Config
+#   ansible.posix.synchronize:
+#     src: "nvim"
+#     dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config"
+#     recursive: true
+#     delete: true

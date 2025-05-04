@@ -55,20 +55,20 @@
     group: "{{ lookup('ansible.builtin.env', 'USER') }}"
     mode: '0700'
 
-# - name: Install fish config
-#   ansible.builtin.copy:
-#     src: "fish"
-#     dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config/"
-#     owner: "{{ lookup('ansible.builtin.env', 'USER') }}"
-#     group: "{{ lookup('ansible.builtin.env', 'USER') }}"
-#     mode: '0755'
-
-- name: Install configs
-  ansible.posix.synchronize:
+- name: Install fish config
+  ansible.builtin.copy:
     src: "fish"
-    dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config"
-    recursive: true
-    delete: true
+    dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config/"
+    owner: "{{ lookup('ansible.builtin.env', 'USER') }}"
+    group: "{{ lookup('ansible.builtin.env', 'USER') }}"
+    mode: '0755'
+
+# - name: Install configs
+#   ansible.posix.synchronize:
+#     src: "fish"
+#     dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config"
+#     recursive: true
+#     delete: true
 
 - name: Copy hidden config
   ansible.builtin.template:
