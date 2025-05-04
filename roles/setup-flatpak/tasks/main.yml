@@ -13,3 +13,12 @@
   when: >
     'flathub' not in flatpak_remotes_result.stdout
   changed_when: true
+
+- name: Install Gnome Software
+  ansible.builtin.apt:
+    name: "{{ item.name }}"
+    state: "{{ item.state }}"
+  with_items:
+    - { name: gnome-software, state: present }
+    - { name: gnome-software-plugin-flatpak, state: present }
+    - { name: gnome-software-plugin-snap, state: present }
