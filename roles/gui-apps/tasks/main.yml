@@ -1,0 +1,31 @@
+- name: Install Flatpak Apps
+  community.general.flatpak:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - com.bitwarden.desktop
+    - org.videolan.VLC
+    - org.onlyoffice.desktopeditors
+    - org.mozilla.Thunderbird
+    - org.libreoffice.LibreOffice
+    - org.gimp.GIMP
+    - org.flameshot.Flameshot
+    - md.obsidian.Obsidian
+    - com.xnview.XnViewMP
+    - com.valvesoftware.Steam
+    - com.usebottles.bottles
+    - com.sublimetext.three
+    - com.slack.Slack
+    - com.parsecgaming.parsec
+    - com.microsoft.Edge
+    - com.jgraph.drawio.desktop
+    - com.google.Chrome
+    - com.github.tchx84.Flatseal
+    - com.discordapp.Discord
+
+- name: Install Snap Apps
+  community.general.snap:
+    name: "{{ item.name }}"
+    classic: "{{ item.classic }}"
+  with_items:
+    - { name: remmina, classic: false }

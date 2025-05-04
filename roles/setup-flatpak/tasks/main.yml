@@ -13,4 +13,3 @@
   when: >
     'flathub' not in flatpak_remotes_result.stdout
   changed_when: true
-

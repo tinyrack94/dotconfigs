@@ -2,4 +2,3 @@
   ansible.builtin.apt:
     name: snapd
     state: present
-
