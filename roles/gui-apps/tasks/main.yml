@@ -6,7 +6,6 @@
     - com.bitwarden.desktop
     - org.videolan.VLC
     - org.onlyoffice.desktopeditors
-    - org.mozilla.Thunderbird
     - org.libreoffice.LibreOffice
     - org.gimp.GIMP
     - org.flameshot.Flameshot
@@ -18,7 +17,6 @@
     - com.slack.Slack
     - com.parsecgaming.parsec
     - com.microsoft.Edge
-    - com.jgraph.drawio.desktop
     - com.google.Chrome
     - com.github.tchx84.Flatseal
     - com.discordapp.Discord
@@ -29,3 +27,5 @@
     classic: "{{ item.classic }}"
   with_items:
     - { name: remmina, classic: false }
+    - { name: tailscale, classic: false }
+    - { name: thunderbird, classic: false }
