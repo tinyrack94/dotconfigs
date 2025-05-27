@@ -119,22 +119,7 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
-      ensure_installed = {
-        "bash",
-        "html",
-        "javascript",
-        "json",
-        "lua",
-        "markdown",
-        "markdown_inline",
-        "python",
-        "query",
-        "regex",
-        "tsx",
-        "typescript",
-        "vim",
-        "yaml",
-      },
+      ensure_installed = "all",  -- Install all available parsers
     },
   },
 
@@ -191,8 +176,6 @@ return {
         "shellcheck",
         "shfmt",
         "flake8",
-        "ansible-lint",
-        "ansible-language-server",
       },
     },
   },
