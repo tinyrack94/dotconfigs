@@ -28,6 +28,7 @@ vim.o.ignorecase = true
 vim.opt.termguicolors = true
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.laststatus = 3
 
 vim.opt.expandtab = true   -- 탭 키를 누르면 스페이스로 변환
 vim.opt.tabstop = 2        -- 탭 하나의 너비를 스페이스 4개로 설정

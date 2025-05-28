@@ -36,7 +36,7 @@ return {
           ['<C-e>'] = cmp.mapping.abort(),                   -- 자동 완성 메뉴 닫기
           ['<CR>'] = cmp.mapping.confirm({ select = true }), -- 선택된 항목 확인 (Enter 키)
           -- Tab 키로 완성 제안 이동 및 스니펫 확장
-          ['<Tab>'] = cmp.mapping(function(fallback)
+          ['<C-j>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
               cmp.select_next_item()
             elseif luasnip.expand_or_jumpable() then
@@ -45,7 +45,7 @@ return {
               fallback()
             end
           end, { 'i', 's' }),
-          ['<S-Tab>'] = cmp.mapping(function(fallback)
+          ['<C-k>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
               cmp.select_prev_item()
             elseif luasnip.jumpable(-1) then

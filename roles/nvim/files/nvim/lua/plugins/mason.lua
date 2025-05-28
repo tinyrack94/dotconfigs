@@ -26,7 +26,7 @@ return {
           {
             '<leader>ld',
             vim.diagnostic.open_float,
-            desc = "Show [D]iagnostic"
+            desc = "Show diagnostic"
           }
         },
       })
@@ -75,6 +75,16 @@ return {
           vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format, {
             buffer = ev.buf,
             desc = "Format Codes"
+          })
+
+          vim.keymap.set('n', '<leader>le', '<cmd>LspEslintFixAll<CR>', {
+            buffer = ev.buf,
+            desc = "Eslint fix all"
+          })
+
+          vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action, {
+            buffer = ev.buf,
+            desc = "Code Actions"
           })
 
           -- vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
