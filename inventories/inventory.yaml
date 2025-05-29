@@ -14,8 +14,8 @@ all-debian-based:
 
 local-machines:
   hosts:
-    micropc:
-    # localhost:
+    # micropc:
+    localhost:
     #   ansible_connection: local
 
 remote-dev-machines:
