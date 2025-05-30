@@ -25,7 +25,7 @@ return {
             luasnip.expand(args.body)
           end,
         },
-        window = {
+        window = { 
           completion = cmp.config.window.bordered(),
           documentation = cmp.config.window.bordered(),
         },

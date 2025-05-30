@@ -16,7 +16,7 @@ local-machines:
   hosts:
     # micropc:
     localhost:
-    #   ansible_connection: local
+      ansible_connection: local
 
 remote-dev-machines:
   hosts:
