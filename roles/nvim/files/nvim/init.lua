@@ -109,7 +109,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
       desc = "Code Actions"
     })
 
-    vim.keymap.set('n', '<leader>lR', '<cmd>Telescope lsp_references<cr>', {
+    vim.keymap.set('n', '<leader>lR', vim.lsp.buf.references, {
       buffer = ev.buf,
       desc = "References"
     })
@@ -133,10 +133,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 ----- telescope
 
-add({
-  source = 'nvim-telescope/telescope.nvim',
-  depends = { 'nvim-lua/plenary.nvim' },
-})
+-- add({
+--   source = 'nvim-telescope/telescope.nvim',
+--   depends = { 'nvim-lua/plenary.nvim' },
+-- })
 
 ---------------------------------------------------- theme
 add({
