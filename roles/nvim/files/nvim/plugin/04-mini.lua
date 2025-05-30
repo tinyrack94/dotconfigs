@@ -140,6 +140,7 @@ now(function()
   vim.keymap.set('n', '<leader>pf', '<cmd>Pick files<cr>', { desc = "Files" })
   vim.keymap.set('n', '<leader>pg', '<cmd>Pick grep_live<cr>', { desc = "Grep" })
   vim.keymap.set('n', '<leader>pb', '<cmd>Pick buffers<cr>', { desc = "Buffers" })
+  vim.keymap.set('n', '<leader>pl', '<cmd>Pick buflines<cr>', { desc = "Buffer Lines" })
 
   -- 방문 히스토리 지원
   require('mini.visits').setup({})

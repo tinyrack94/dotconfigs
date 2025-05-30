@@ -42,6 +42,7 @@ cmp.setup({
     { name = 'luasnip' },
     { name = 'buffer' },
     { name = 'path' },
+    { name = "codeium" },
   }),
   formatting = {
     format = lspkind.cmp_format({ -- 선택 사항: 아이콘 표시
@@ -68,4 +69,3 @@ cmp.setup.cmdline(':', {
     { name = 'cmdline' }
   })
 })
-

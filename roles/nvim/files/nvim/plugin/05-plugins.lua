@@ -1,22 +1,24 @@
 local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
 
-add({
-  source = "olimorris/codecompanion.nvim",
-  depends = {
-    'nvim-lua/plenary.nvim',
-    "nvim-treesitter/nvim-treesitter",
-    'MeanderingProgrammer/render-markdown.nvim',
-  },
-})
+
+add({ source = 'MeanderingProgrammer/render-markdown.nvim' })
 
 require('render-markdown').setup({
   file_types = { "markdown", "codecompanion" }
 })
 
+add({
+  source = "olimorris/codecompanion.nvim",
+  depends = {
+    'nvim-lua/plenary.nvim',
+    "nvim-treesitter/nvim-treesitter",
+  },
+})
+
 require("codecompanion").setup({
   strategies = {
     chat = {
-      adapter = "gemini",
+      adapter = "openai",
       -- slash_commands = {
       --   ["file"] = {
       --     -- Location to the slash command in CodeCompanion
@@ -53,45 +55,97 @@ vim.keymap.set('n', '<leader>ca', '<cmd>CodeCompanionActions<cr>', {
   desc = "Actions"
 })
 
+add({
+  source = "github/copilot.vim"
+})
+
 -- add({
---   source = 'saghen/blink.cmp',
---   depends = { 'rafamadriz/friendly-snippets' },
--- })
--- require('blink-cmp').setup({
---   -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
---   -- 'super-tab' for mappings similar to vscode (tab to accept)
---   -- 'enter' for enter to accept
---   -- 'none' for no mappings
---   --
---   -- All presets have the following mappings:
---   -- C-space: Open menu or open docs if already open
---   -- C-n/C-p or Up/Down: Select next/previous item
---   -- C-e: Hide menu
---   -- C-k: Toggle signature help (if signature.enabled = true)
---   --
---   -- See :h blink-cmp-config-keymap for defining your own keymap
---   keymap = { preset = 'default' },
---
---   appearance = {
---     -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
---     -- Adjusts spacing to ensure icons are aligned
---     nerd_font_variant = 'mono'
---   },
---
---   -- (Default) Only show the documentation popup when manually triggered
---   completion = { documentation = { auto_show = false } },
---
---   -- Default list of enabled providers defined so that you can extend it
---   -- elsewhere in your config, without redefining it, due to `opts_extend`
---   sources = {
---     default = { 'lsp', 'path', 'snippets', 'buffer' },
---   },
---
---   -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
---   -- You may use a lua implementation instead by using `implementation = "lua"` or fallback to the lua implementation,
---   -- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
---   --
---   -- See the fuzzy documentation for more information
---   fuzzy = { implementation = "prefer_rust_with_warning" }
+--   source = "Exafunction/windsurf.nvim",
+--   depends = {
+--     "nvim-lua/plenary.nvim",
+--     "hrsh7th/nvim-cmp",
+--   }
 -- })
 --
+-- require("codeium").setup({
+--   -- Optionally disable cmp source if using virtual text only
+--   enable_cmp_source = false,
+--   virtual_text = {
+--     enabled = true,
+--     -- These are the defaults
+--     -- Set to true if you never want completions to be shown automatically.
+--     manual = false,
+--     -- A mapping of filetype to true or false, to enable virtual text.
+--     filetypes = {},
+--     -- Whether to enable virtual text of not for filetypes not specifically listed above.
+--     default_filetype_enabled = true,
+--     -- How long to wait (in ms) before requesting completions after typing stops.
+--     idle_delay = 75,
+--     -- Priority of the virtual text. This usually ensures that the completions appear on top of
+--     -- other plugins that also add virtual text, such as LSP inlay hints, but can be modified if
+--     -- desired.
+--     virtual_text_priority = 65535,
+--     -- Set to false to disable all key bindings for managing completions.
+--     map_keys = true,
+--     -- The key to press when hitting the accept keybinding but no completion is showing.
+--     -- Defaults to \t normally or <c-n> when a popup is showing.
+--     accept_fallback = nil,
+--     -- Key bindings for managing completions in virtual text mode.
+--     key_bindings = {
+--       -- Accept the current completion.
+--       accept = "<Tab>",
+--       -- Accept the next word.
+--       accept_word = false,
+--       -- Accept the next line.
+--       accept_line = false,
+--       -- Clear the virtual text.
+--       clear = false,
+--       -- Cycle to the next completion.
+--       next = "<M-]>",
+--       -- Cycle to the previous completion.
+--       prev = "<M-[>",
+--     }
+--   }
+-- })
+
+
+--- avante
+
+-- add({
+--   source = 'yetone/avante.nvim',
+--   monitor = 'main',
+--   depends = {
+--     'nvim-treesitter/nvim-treesitter',
+--     'stevearc/dressing.nvim',
+--     'nvim-lua/plenary.nvim',
+--     'MunifTanjim/nui.nvim',
+--     'echasnovski/mini.icons'
+--   },
+--   hooks = {
+--     post_checkout = function() vim.cmd('make') end
+--   }
+-- })
+-- --- optional
+-- add({ source = 'hrsh7th/nvim-cmp' })
+-- add({ source = 'zbirenbaum/copilot.lua' })
+-- add({ source = 'HakonHarnes/img-clip.nvim' })
+-- add({ source = 'MeanderingProgrammer/render-markdown.nvim' })
+--
+-- later(function() require('render-markdown').setup({}) end)
+-- later(function()
+--   require('img-clip').setup({
+--     default = {
+--       embed_image_as_base64 = false,
+--       prompt_for_file_name = false,
+--       drag_and_drop = {
+--         insert_mode = true,
+--       },
+--       -- required for Windows users
+--       use_absolute_path = true,
+--     },
+--   })                           -- config img-clip
+--   require("copilot").setup({}) -- setup copilot to your liking
+--   require("avante").setup({
+--     provider = "gemini"
+--   })  -- config for avante.nvim
+-- end)
