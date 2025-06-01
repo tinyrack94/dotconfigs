@@ -29,3 +29,4 @@
     - { name: remmina, classic: false }
     - { name: tailscale, classic: false }
     - { name: thunderbird, classic: false }
+    - { name: alacritty, classic: true }

@@ -34,6 +34,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     --     group = "Go To",
     --   }
     -- })
+    
     vim.keymap.set('n', '<leader>ld', vim.diagnostic.open_float, {
       buffer = ev.buf,
       desc = "Open diagnostics"

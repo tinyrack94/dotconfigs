@@ -190,7 +190,9 @@ now(function()
   require('mini.trailspace').setup({})
 
   -- session 개념 지원
-  require('mini.sessions').setup({})
+  require('mini.sessions').setup({
+    directory = vim.fn.stdpath "config" .. "/sessions",
+  })
 
   -- others
   require('mini.fuzzy').setup({})
