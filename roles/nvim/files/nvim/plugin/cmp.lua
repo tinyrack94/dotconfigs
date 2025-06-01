@@ -38,11 +38,15 @@ cmp.setup({
     ["<C-Space>"] = cmp.mapping.complete(),
   }),
   sources = cmp.config.sources({
+    -- neovim 개발환경 로드
+    {
+      name = "lazydev",
+      group_index = 0,   -- set group index to 0 to skip loading LuaLS completions
+    },
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
     { name = 'buffer' },
     { name = 'path' },
-    { name = "codeium" },
   }),
   formatting = {
     format = lspkind.cmp_format({ -- 선택 사항: 아이콘 표시

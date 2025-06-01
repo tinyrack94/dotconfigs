@@ -86,6 +86,7 @@ now(function()
       -- { mode = 'n', keys = '<Leader>a',  desc = '+AI' },
       { mode = 'n', keys = '<Leader>p',  desc = '+Pick' },
       { mode = 'n', keys = '<Leader>f',  desc = '+Files' },
+      -- { mode = 'n', keys = '<Leader>d',  desc = '+Debug' },
       { mode = 'n', keys = '<Leader>l',  desc = '+LSP' },
       { mode = 'n', keys = '<Leader>lg', desc = '+Go to' },
       { mode = 'n', keys = '<Leader>t',  desc = '+Troubles' },
@@ -154,10 +155,16 @@ now(function()
   -- icon 팩
   require('mini.icons').setup({})
 
-  -- animation 지원
-  -- require('mini.animate').setup({})
+  -- local animate = require('mini.animate')
+  -- -- animation 지원
+  -- animate.setup({
+  --   scroll = {
+  --     enable = false,
+  --   },
+  -- })
 
   -- 테마 지원
+  --
   -- require('mini.base16').setup({
   --   palette = "bas00"
   -- })
@@ -195,5 +202,9 @@ now(function()
   })
 
   -- others
+  -- 주석 지원
+  -- 주석 지원
+  require('mini.comment').setup({});
+  require('mini.comment').setup({});
   require('mini.fuzzy').setup({})
 end)
