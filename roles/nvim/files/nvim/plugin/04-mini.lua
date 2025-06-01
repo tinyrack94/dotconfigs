@@ -49,6 +49,10 @@ now(function()
       { mode = 'n', keys = 'g' },
       { mode = 'x', keys = 'g' },
 
+      -- `[` and `]` keys
+      { mode = 'n', keys = '[' },
+      { mode = 'n', keys = ']' },
+
       -- Marks
       { mode = 'n', keys = "'" },
       { mode = 'n', keys = '`' },
@@ -152,6 +156,11 @@ now(function()
 
   -- animation 지원
   -- require('mini.animate').setup({})
+
+  -- 테마 지원
+  -- require('mini.base16').setup({
+  --   palette = "bas00"
+  -- })
 
   -- cursor 위치 단어 highlight
   require('mini.cursorword').setup({})

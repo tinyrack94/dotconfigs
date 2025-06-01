@@ -9,7 +9,8 @@ add({
 
 -- Possible to immediately execute code which depends on the added plugin
 require('nvim-treesitter.configs').setup({
-  ensure_installed = 'all',
+  -- ensure_installed = 'all',
+  auto_install = true,
   highlight = { enable = true },
 })
 
@@ -58,10 +59,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
       desc = "Format Codes"
     })
 
-    -- vim.keymap.set('n', '<leader>le', '<cmd>LspEslintFixAll<CR>', {
-    --   buffer = ev.buf,
-    --   desc = "Eslint fix all"
-    -- })
+    vim.keymap.set('n', '<leader>le', '<cmd>LspEslintFixAll<CR>', {
+      buffer = ev.buf,
+      desc = "Eslint fix all"
+    })
 
     vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action, {
       buffer = ev.buf,
@@ -71,6 +72,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', '<leader>lR', vim.lsp.buf.references, {
       buffer = ev.buf,
       desc = "References"
+    })
+
+    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, {
+      buffer = ev.buf,
+      desc = "Signature Help"
     })
 
     -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
@@ -89,4 +95,3 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- end, opts)
   end,
 })
-

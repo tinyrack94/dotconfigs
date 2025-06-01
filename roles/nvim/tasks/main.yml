@@ -1,3 +1,10 @@
+- name: Install Dependencies (Snap)
+  community.general.snap:
+    name: "{{ item.name }}"
+    classic: "{{ item.classic }}"
+  with_items:
+    - { name: nvim, classic: true }
+
 - name: Install Dependencies (APT)
   ansible.builtin.apt:
     name: "{{ item }}"
@@ -8,6 +15,9 @@
     - pip
     - python3
     - ripgrep
+    - luarocks
+    - lua5.1
+    - liblua5.1-0-dev
 
 - name: Install Dependencies (Homebrew)
   community.general.homebrew:
@@ -16,11 +26,6 @@
   become: false
   with_items:
     - lazygit
-    - neovim
-    - lua
-    - luarocks
-    - luajit
-
 
 - name: Setup config dir
   ansible.builtin.file:
