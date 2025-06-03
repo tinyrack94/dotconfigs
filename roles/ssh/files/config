@@ -8,7 +8,7 @@ Host adguard
 
 Host private-nginx
   HostName private-nginx.server.lan
-  User root 
+  User root
 
 Host public-nginx
   HostName public-nginx.server.lan
