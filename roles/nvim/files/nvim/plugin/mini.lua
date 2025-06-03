@@ -11,7 +11,7 @@ now(function()
   require('mini.move').setup({});
 
   -- 코드 자동 완성 제공
-  -- require('mini.completion').setup({});
+  require('mini.completion').setup({});
 
   -- 객체 쪼개기/나누기 지원
   require('mini.splitjoin').setup({});
