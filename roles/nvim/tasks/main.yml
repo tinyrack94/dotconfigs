@@ -18,6 +18,8 @@
     - luarocks
     - lua5.1
     - liblua5.1-0-dev
+    - xclip
+    - wl-clipboard
 
 - name: Install Dependencies (Homebrew)
   community.general.homebrew:

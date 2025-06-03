@@ -1,6 +1,7 @@
 local now = MiniDeps.now
 
 now(function()
+  vim.opt.clipboard = "unnamedplus"
   vim.g.mapleader = " "
   vim.g.maplocalleader = "\\"
 
