@@ -20,6 +20,7 @@
     - com.google.Chrome
     - com.github.tchx84.Flatseal
     - com.discordapp.Discord
+    - com.github.PintaProject.Pinta
 
 - name: Install Snap Apps
   community.general.snap:
