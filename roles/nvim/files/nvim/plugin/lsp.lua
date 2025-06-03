@@ -22,7 +22,9 @@ later(function()
   })
 
   require('mason').setup({});
-  require('mason-lspconfig').setup({});
+  require('mason-lspconfig').setup({
+    automatic_enable = true,
+  });
 
   vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('UserLspConfig', {}),

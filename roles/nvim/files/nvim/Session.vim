@@ -17,8 +17,8 @@ badd +72 plugin/cmp.lua
 badd +7 plugin/markdown.lua
 badd +11 plugin/trouble.lua
 badd +9 plugin/treesitter.lua
-badd +5 plugin/ai.lua
-badd +25 ~/.config/nvim/plugin/lsp.lua
+badd +1 plugin/ai.lua
+badd +1 ~/.config/nvim/plugin/lsp.lua
 badd +2 ~/.config/nvim/plugin/theme.lua
 badd +10 plugin/git.lua
 badd +1 health://
@@ -26,8 +26,9 @@ badd +6 ~/.config/nvim/plugin/mini.lua
 badd +1 mini-deps-snap
 argglobal
 %argdel
-edit plugin/ai.lua
+edit ~/.config/nvim/plugin/lsp.lua
 argglobal
+balt ~/.config/nvim/plugin/theme.lua
 setlocal foldmethod=manual
 setlocal foldexpr=v:lua.vim.treesitter.foldexpr()
 setlocal foldmarker={{{,}}}
@@ -38,12 +39,12 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 34 - ((33 * winheight(0) + 34) / 69)
+let s:l = 1 - ((0 * winheight(0) + 34) / 69)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 34
-normal! 0
+keepjumps 1
+normal! 066|
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
