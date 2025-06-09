@@ -23,7 +23,23 @@
   with_items:
     - { src: "winetree94_id_rsa", dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.ssh/winetree94_id_rsa" }
     - { src: "winetree94_id_rsa.pub", dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.ssh/winetree94_id_rsa.pub" }
-    - { src: "config", dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.ssh/config" }
+  when: ansible_facts['os_family'] != 'Windows'
+
+- name: Copy hidden config
+  ansible.builtin.template:
+    src: config.j2
+    dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.ssh/config"
+    owner: "{{ lookup('ansible.builtin.env', 'USER') }}"
+    group: "{{ lookup('ansible.builtin.env', 'USER') }}"
+    mode: '0600'
+  vars:
+    tinyrack_ip_address: !vault |
+      $ANSIBLE_VAULT;1.1;AES256
+      35373036393837303139353264613234346535336265313762363535353136353437346530396538
+      6436663633643464623030323039386539333732353434640a613439346438393064366430393039
+      62623266646134363737623665373739383731626238663034363865646436316435363131393736
+      6566393338316630660a663633323961343530353739306662376666393232353638656531326334
+      6133
   when: ansible_facts['os_family'] != 'Windows'
 
 - name: Setup Config (Windows)
