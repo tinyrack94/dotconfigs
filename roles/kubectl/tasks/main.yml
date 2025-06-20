@@ -23,13 +23,14 @@
     - { name: kubectl, classic: true, state: present }
     - { name: helm, classic: true, state: present }
 
-- name: Install kubeseal
+- name: Install Brew Packages
   community.general.homebrew:
     name: "{{ item.name }}"
-    state: present
+    state: "{{ item.state }}"
   become: false
   with_items:
-    - { name: kubeseal }
+    - { name: k9s, state: present }
+    - { name: kubeseal, state: present }
 
 - name: Check if flux is installed
   ansible.builtin.stat:
