@@ -23,6 +23,7 @@
     - { name: com.github.PintaProject.Pinta, state: present }
     - { name: xyz.xclicker.xclicker, state: present }
     - { name: com.redis.RedisInsight, state: present }
+    - { name: io.kinvolk.Headlamp, state: present }
 
 - name: Install Snap Apps
   community.general.snap:
