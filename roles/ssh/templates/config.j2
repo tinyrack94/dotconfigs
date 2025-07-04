@@ -67,9 +67,6 @@ Host openmediavault
 Host macmini
   HostName 10.132.245.23
 
-Host headscale
-  HostName headscale.server.lan
-
 Host desktop.server.lan
   HostName desktop.server.lan
 
@@ -79,13 +76,18 @@ Host mail.winetree94.com
 Host vpn.winetree94.com
   HostName vpn.winetree94.com
 
-Host tinyrack.net.old
-  User tinyrack
-  HostName {{ tinyrack_old_ip_address }}
-
 Host tinyrack.net
   User tinyrack
   HostName 100.90.97.44
+
+Host public-server
+  User winetree94
+  HostName 100.102.199.94
+
+Host storage-box
+  User u467779
+  HostName u467779.your-storagebox.de
+  Port 23
 
 Host github.com
   HostName github.com
