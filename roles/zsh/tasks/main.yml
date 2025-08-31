@@ -1,3 +1,37 @@
 - name: Install zsh
   ansible.builtin.apt:
-    name: git
+    name: "{{ item }}"
+    state: present
+  become: true
+  with_items:
+    - fzf
+    - zsh
+
+- name: Setup default shell
+  ansible.builtin.user:
+    name: "{{ lookup('ansible.builtin.env', 'USER') }}"
+    shell: /usr/bin/zsh
+
+- name: Create Config Dir
+  ansible.builtin.file:
+    path: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config"
+    state: directory
+    owner: "{{ lookup('ansible.builtin.env', 'USER') }}"
+    group: "{{ lookup('ansible.builtin.env', 'USER') }}"
+    mode: '0700'
+
+- name: Install Config Dir
+  ansible.builtin.copy:
+    src: "zsh"
+    dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config/"
+    owner: "{{ lookup('ansible.builtin.env', 'USER') }}"
+    group: "{{ lookup('ansible.builtin.env', 'USER') }}"
+    mode: '0755'
+
+- name: Copy hidden config
+  ansible.builtin.copy:
+    src: .zshrc
+    dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.zshrc"
+    owner: "{{ lookup('ansible.builtin.env', 'USER') }}"
+    group: "{{ lookup('ansible.builtin.env', 'USER') }}"
+    mode: '0644'
