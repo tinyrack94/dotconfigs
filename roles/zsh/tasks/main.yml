@@ -12,7 +12,7 @@
     name: "{{ lookup('ansible.builtin.env', 'USER') }}"
     shell: /usr/bin/zsh
 
-- name: Create Config Dir
+- name: Setup config dir
   ansible.builtin.file:
     path: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config"
     state: directory
@@ -20,7 +20,7 @@
     group: "{{ lookup('ansible.builtin.env', 'USER') }}"
     mode: '0700'
 
-- name: Install Config Dir
+- name: Install Config
   ansible.builtin.copy:
     src: "zsh"
     dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config/"
