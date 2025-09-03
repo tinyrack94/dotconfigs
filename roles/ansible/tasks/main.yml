@@ -5,6 +5,7 @@
 
 - name: Install Ansible
   community.general.pipx:
+    executable: /usr/bin/pipx
     name: "{{ item }}"
   with_items:
     - "ansible"
