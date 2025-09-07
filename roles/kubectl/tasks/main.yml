@@ -21,6 +21,7 @@
   become: false
   with_items:
     - { name: kubectl, state: present }
+    - { name: age, state: present }
     - { name: sops, state: present }
     - { name: k9s, state: present }
     - { name: kubeseal, state: present }
