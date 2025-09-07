@@ -3,3 +3,4 @@ collections/*
 .vault_pass
 .become_pass
 Session.vim
+.idea
