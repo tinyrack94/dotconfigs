@@ -20,10 +20,11 @@
     state: "{{ item.state }}"
   become: false
   with_items:
+    - { name: kubectl, state: present }
+    - { name: sops, state: present }
     - { name: k9s, state: present }
     - { name: kubeseal, state: present }
     - { name: talosctl, state: present }
-    - { name: kubectl, state: present }
     - { name: kubectl-cnpg, state: present }
     - { name: kubectl-ai, state: present }
     - { name: helm, state: present }
