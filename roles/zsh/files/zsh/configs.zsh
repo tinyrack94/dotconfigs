@@ -4,4 +4,6 @@ ZSH_THEME="miloshadzic"
 
 export PUBLIC_CONTROL_PLANE_IP=10.23.11.1
 
+export TALOS_CONFIG=/home/winetree94/workspaces/tinyrack/public/talos/talosconfig
+
 git_clone_if_not_exists "https://github.com/nvm-sh/nvm.git" "--depth=1" "$HOME/.nvm"
