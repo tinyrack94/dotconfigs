@@ -1,5 +1,4 @@
 - name: Install bitwarden
-  community.general.snap:
-    name: bw
-    classic: true
+  community.general.homebrew:
+    name: bitwarden-cli
     state: present
