@@ -17,6 +17,7 @@ ohmyzsh/ohmyzsh path:plugins/fluxcd
 ohmyzsh/ohmyzsh path:plugins/argocd
 ohmyzsh/ohmyzsh path:plugins/extract
 ohmyzsh/ohmyzsh path:plugins/ubuntu
+ohmyzsh/ohmyzsh path:plugins/direnv
 
 # add fish-like features
 MichaelAquilina/zsh-you-should-use
