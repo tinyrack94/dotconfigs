@@ -1,4 +1,5 @@
 - name: Install Dependencies
+  become: true
   ansible.builtin.apt:
     name: pipx
     state: present
