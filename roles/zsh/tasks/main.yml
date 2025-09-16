@@ -15,6 +15,7 @@
     - direnv
 
 - name: Setup default shell
+  become: true
   ansible.builtin.user:
     name: "{{ lookup('ansible.builtin.env', 'USER') }}"
     shell: /usr/bin/zsh
