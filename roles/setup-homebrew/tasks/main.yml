@@ -1,31 +1,30 @@
-- name: Ensure Homebrew dependencies are installed
-  ansible.builtin.apt:
-    name:
-      - build-essential
-      - curl
-      - git
-      - tar
+- name: Install required dependencies
   become: true
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - curl
+    - git
+    - build-essential
 
-- name: Check if Homebrew is already installed
+- name: Checking brew install
   ansible.builtin.stat:
-    path: "/home/linuxbrew/.linuxbrew/bin/brew"
-  register: brew_stat
+    path: /home/linuxbrew/.linuxbrew/bin
+  register: brew_check
 
-- block:
-    - name: Create Homebrew directory
-      ansible.builtin.file:
-        path: "/home/linuxbrew/.linuxbrew"
-        state: directory
-        owner: "{{ ansible_env.USER }}"
-        group: "{{ ansible_env.USER }}"
-        mode: "0755"
-      become: true
+- name: Download Linuxbrew installation script
+  ansible.builtin.get_url:
+    url: https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
+    dest: /tmp/brew_install.sh
+    mode: '0755'
+  when: not (brew_check.stat.exists and brew_check.stat.isdir)
 
-    - name: Install Homebrew
-      ansible.builtin.shell: |
-        curl -fsSL https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C /home/linuxbrew/.linuxbrew
-
-  when: not brew_stat.stat.exists
+- name: Install Linuxbrew
+  ansible.builtin.command: /tmp/brew_install.sh
   environment:
-    PATH: "/home/linuxbrew/.linuxbrew/bin:{{ ansible_env.PATH }}"
+    NONINTERACTIVE: "1"
+    HOMEBREW_PREFIX: "{{ ansible_user_dir }}/.brew"
+  register: brew_install_result
+  changed_when: "'Installation successful!' in brew_install_result.stdout"
+  when: not (brew_check.stat.exists and brew_check.stat.isdir)
