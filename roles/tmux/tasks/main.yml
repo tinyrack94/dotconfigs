@@ -1,4 +1,5 @@
 - name: Uninstall apt tmux
+  become: true
   ansible.builtin.apt:
     name: tmux
     state: present
