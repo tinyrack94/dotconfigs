@@ -16,7 +16,7 @@
 
 - name: Tap a Homebrew repository, state present
   community.general.homebrew_tap:
-    name: fluxcd/tap/flux
+    name: fluxcd/tap
 
 - name: Install Brew Packages
   community.general.homebrew:
