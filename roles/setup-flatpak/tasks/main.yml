@@ -5,11 +5,13 @@
     state: present
 
 - name: Check flathub repository
+  become: true
   ansible.builtin.command: "flatpak remotes"
   register: flatpak_remotes_result
   changed_when: false
 
 - name: Regitser flathub repository
+  become: true
   ansible.builtin.command: "flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo"
   when: >
     'flathub' not in flatpak_remotes_result.stdout
