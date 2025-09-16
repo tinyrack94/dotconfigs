@@ -14,6 +14,10 @@
     group: "{{ lookup('ansible.builtin.env', 'USER') }}"
     mode: '0644'
 
+- name: Tap a Homebrew repository, state present
+  community.general.homebrew_tap:
+    name: fluxcd/tap/flux
+
 - name: Install Brew Packages
   community.general.homebrew:
     name: "{{ item.name }}"
