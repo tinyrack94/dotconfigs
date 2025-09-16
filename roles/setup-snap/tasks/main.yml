@@ -1,4 +1,5 @@
 - name: Install snap
+  become: true
   ansible.builtin.apt:
     name: snapd
     state: present
