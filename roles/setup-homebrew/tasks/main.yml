@@ -21,10 +21,10 @@
   when: not (brew_check.stat.exists and brew_check.stat.isdir)
 
 - name: Install Linuxbrew
-  become: true
   ansible.builtin.command: /tmp/brew_install.sh
   environment:
     NONINTERACTIVE: "1"
+    HOMEBREW_PREFIX: "{{ ansible_user_dir }}/.brew"
   register: brew_install_result
   changed_when: "'Installation successful!' in brew_install_result.stdout"
   when: not (brew_check.stat.exists and brew_check.stat.isdir)
