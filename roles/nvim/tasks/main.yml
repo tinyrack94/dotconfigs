@@ -1,10 +1,3 @@
-- name: Install Dependencies (Snap)
-  community.general.snap:
-    name: "{{ item.name }}"
-    classic: "{{ item.classic }}"
-  with_items:
-    - { name: nvim, classic: true }
-
 - name: Install Dependencies (APT)
   ansible.builtin.apt:
     name: "{{ item }}"
@@ -28,6 +21,7 @@
   become: false
   with_items:
     - lazygit
+    - neovim
 
 - name: Setup config dir
   ansible.builtin.file:

@@ -17,6 +17,7 @@
     - tmux
     - bw
     - aichat
+    - nvim
     # - ansible
     - kubectl
     - docker
