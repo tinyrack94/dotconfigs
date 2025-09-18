@@ -1,4 +1,5 @@
 - name: Install Dependencies (APT)
+  become: true
   ansible.builtin.apt:
     name: "{{ item }}"
     state: present
