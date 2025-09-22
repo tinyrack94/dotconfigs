@@ -5,6 +5,7 @@
   "provider": {},
   "small_model": "openrouter/x-ai/grok-4-fast:free",
   // "model": "openrouter/x-ai/grok-4-fast:free",
+  // "model": "anthropic/claude-sonnet-4-20250514",
   "model": "github-copilot/claude-sonnet-4",
   "permission": {
     "bash": "allow",
@@ -25,16 +26,16 @@
     //     "glob": true
     //   }
     // },
-    "ask": {
-      "mode": "subagent",
-      "model": "openrouter/x-ai/grok-4-fast:free",
-      "prompt": "{file:./prompts/ask.md}",
-      "tools": {
-        "write": false,
-        "edit": false,
-        "bash": false
-      }
-    },
+    // "ask": {
+    //   "mode": "subagent",
+    //   "model": "openrouter/x-ai/grok-4-fast:free",
+    //   "prompt": "{file:./prompts/ask.md}",
+    //   "tools": {
+    //     "write": false,
+    //     "edit": false,
+    //     "bash": false
+    //   }
+    // },
     // "plan": {
     //   "mode": "primary",
     //   "model": "openrouter/x-ai/grok-4-fast:free",
