@@ -12,6 +12,7 @@
     - rust
     - python3
     - git
+    - opencode
     - zsh
     - ssh
     - tmux
