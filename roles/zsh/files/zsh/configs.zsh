@@ -1,6 +1,6 @@
 export EDITOR=nvim
 export KUBECONFIG=~/.kube/k3s.yaml
-ZSH_THEME="wezm+"
+ZSH_THEME="essembeh"
 
 export PUBLIC_CONTROL_PLANE_IP=10.23.11.1
 
