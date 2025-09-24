@@ -4,6 +4,8 @@ git_clone_if_not_exists() {
   local target_dir="$3"
 
   if [[ ! -d "$target_dir" ]]; then
+    local parent_dir="$(dirname "$target_dir")"
+    mkdir -p "$parent_dir"
     echo "📥 $repo_url clone..."
     git clone "$options" "$repo_url" "$target_dir"
   fi

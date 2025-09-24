@@ -33,7 +33,7 @@
     //   "prompt": "{file:./prompts/ask.md}",
     //   "tools": {
     //     "write": false,
-    //     "edit": false,
+    // <LeftMouse>   "edit": false,
     //     "bash": false
     //   }
     // },

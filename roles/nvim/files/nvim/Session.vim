@@ -15,19 +15,19 @@ badd +1 plugin/trouble.lua
 badd +9 plugin/treesitter.lua
 badd +1 plugin/ai.lua
 badd +1 ~/.config/nvim/plugin/lsp.lua
-badd +14 ~/.config/nvim/plugin/theme.lua
+badd +15 ~/.config/nvim/plugin/theme.lua
 badd +1 plugin/git.lua
 badd +1 health://
-badd +3 ~/.config/nvim/plugin/mini.lua
+badd +24 ~/.config/nvim/plugin/mini.lua
 badd +1 mini-deps-snap
 badd +4 init.lua
 badd +3 .gitignore
 badd +76 /home/linuxbrew/.linuxbrew/Cellar/neovim/0.11.4/share/nvim/runtime/lua/vim/keymap.lua
 badd +1 plugin/configs.lua
-badd +18 plugin/keymap.lua
+badd +2 plugin/keymap.lua
 argglobal
 %argdel
-edit ~/.config/nvim/plugin/theme.lua
+edit ~/.config/nvim/plugin/mini.lua
 argglobal
 balt plugin/keymap.lua
 setlocal foldmethod=manual
@@ -40,12 +40,12 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 14 - ((13 * winheight(0) + 38) / 76)
+let s:l = 27 - ((23 * winheight(0) + 38) / 76)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 14
-normal! 040|
+keepjumps 27
+normal! 012|
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

@@ -9,3 +9,6 @@ export TALOSCONFIG=/home/winetree94/workspaces/tinyrack/public/talos/talosconfig
 maybe_eval direnv hook zsh
 
 git_clone_if_not_exists "https://github.com/nvm-sh/nvm.git" "--depth=1" "$HOME/.nvm"
+
+git_clone_if_not_exists "https://github.com/tmux-plugins/tpm" "--depth=1" "$HOME/.tmux/plugins/tpm"
+
