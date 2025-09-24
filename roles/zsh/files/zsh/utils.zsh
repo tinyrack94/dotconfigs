@@ -42,5 +42,5 @@ sync_configs() {
 		ansible-vault encrypt "$HOME/.dotconfigs/roles/zsh/files/zsh/secrets.zsh"
 	)
 	sync_path "$HOME/.config/nvim/" "$HOME/.dotconfigs/roles/nvim/files/nvim/"
-	sync_path "$HOME/.config/opencode/" "$HOME/.dotconfigs/roles/opencode/files/"
+	sync_path "$HOME/.config/opencode/" "$HOME/.dotconfigs/roles/opencode/files/opencode/"
 }
