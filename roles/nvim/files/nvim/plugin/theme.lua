@@ -1,5 +1,15 @@
-local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
+-- vim.pack.add({
+--   "https://github.com/catppuccin/nvim.git"
+-- })
+--
+-- vim.cmd.colorscheme "catppuccin-mocha"
+--
+--
+--
 
-add({ source = "catppuccin/nvim", name = "catppuccin" })
+vim.pack.add({
+  "https://github.com/projekt0n/github-nvim-theme.git"
+})
 
-vim.cmd.colorscheme "catppuccin-mocha"
+vim.cmd("colorscheme github_dark_default")
+

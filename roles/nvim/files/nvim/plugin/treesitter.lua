@@ -1,16 +1,12 @@
-local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
+vim.pack.add({
+  "https://github.com/nvim-treesitter/nvim-treesitter.git",
+})
 
-later(function()
-  add({
-    source = 'nvim-treesitter/nvim-treesitter',
-    checkout = 'master',
-    monitor = 'main',
-    hooks = { post_checkout = function() vim.cmd('TSUpdate') end },
-  })
-  -- tely execute code which depends on the added plugin
-  require('nvim-treesitter.configs').setup({
-    -- ensure_installed = 'all',
-    auto_install = true,
-    highlight = { enable = true },
-  })
-end)
+require('nvim-treesitter').setup({});
+
+require("nvim-treesitter.configs").setup({
+  -- ensure_installed = 'all',
+  auto_install = true,
+  highlight = { enable = true },
+})
+

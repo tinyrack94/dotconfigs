@@ -30,7 +30,7 @@ maybe_alias() {
 sync_path() {
 	local src="$1"
 	local dest="$2"
-	rsync -av "$src" "$dest"
+	rsync -av --delete "$src" "$dest"
 }
 
 sync_configs() {
