@@ -27,20 +27,47 @@ maybe_alias() {
   fi
 }
 
-# sync two folders
-# example usage:
-sync_path() {
-	local src="$1"
-	local dest="$2"
-	rsync -av --delete "$src" "$dest"
-}
-
 sync_configs() {
-	sync_path "$HOME/.config/zsh/" "$HOME/.dotconfigs/roles/zsh/files/zsh/"
+  # zsh
+  echo "sync zsh configs"
+	rsync -av --delete \
+    "$HOME/.config/zsh/" "$HOME/.dotconfigs/roles/zsh/files/zsh/"
 	(
 		cd "$HOME/.dotconfigs"
 		ansible-vault encrypt "$HOME/.dotconfigs/roles/zsh/files/zsh/secrets.zsh"
 	)
-	sync_path "$HOME/.config/nvim/" "$HOME/.dotconfigs/roles/nvim/files/nvim/"
-	sync_path "$HOME/.config/opencode/" "$HOME/.dotconfigs/roles/opencode/files/opencode/"
+
+  # ssh
+  echo "sync ssh configs"
+  rsync -av --delete \
+    --include 'config' \
+    --include 'winetree94_id_rsa' \
+    --include 'winetree94_id_rsa.pub' \
+    --exclude '*' \
+    "$HOME/.ssh/" "$HOME/.dotconfigs/roles/ssh/files/.ssh/"
+  (
+		cd "$HOME/.dotconfigs"
+		ansible-vault encrypt "$HOME/.dotconfigs/roles/ssh/files/.ssh/winetree94_id_rsa"
+		ansible-vault encrypt "$HOME/.dotconfigs/roles/ssh/files/.ssh/winetree94_id_rsa.pub"
+  )
+
+  # tmux
+  echo "sync tmux configs"
+  rsync -av \
+    "$HOME/.tmux.conf" "$HOME/.dotconfigs/roles/tmux/files/"
+
+  # gitconfig
+  echo "sync git configs"
+  rsync -av \
+    "$HOME/.gitconfig" "$HOME/.dotconfigs/roles/git/files/"
+
+  # nvim
+  echo "sync neovim configs"
+	rsync -av --delete \
+    "$HOME/.config/nvim/" "$HOME/.dotconfigs/roles/nvim/files/nvim/"
+
+  # opencode
+  echo "sync opencode configs"
+	rsync -av --delete \
+    "$HOME/.config/opencode/" "$HOME/.dotconfigs/roles/opencode/files/opencode/"
 }
