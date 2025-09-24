@@ -1,0 +1,23 @@
+-- local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
+--
+-- later(function()
+--   add({
+--     source = 'rcarriga/nvim-dap-ui',
+--     depends = {
+--       'mfussenegger/nvim-dap',
+--       'nvim-neotest/nvim-nio',
+--     }
+--   })
+--
+--   local dap_ui = require('dapui')
+--
+--   dap_ui.setup({})
+--
+--   vim.keymap.set('n', '<leader>du', function()
+--     dap_ui.toggle()
+--   end, {
+--     noremap = true,
+--     silent = true,
+--     desc = "Toggle DAP UI"
+--   })
+-- end)
