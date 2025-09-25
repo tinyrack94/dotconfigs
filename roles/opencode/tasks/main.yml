@@ -10,10 +10,12 @@
   with_items:
     - { name: sst/tap/opencode, state: present }
 
-- name: Install Config Dir
-  ansible.builtin.copy:
+- name: Install Config
+  ansible.builtin.synchronize:
     src: "opencode"
     dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config/"
-    owner: "{{ lookup('ansible.builtin.env', 'USER') }}"
-    group: "{{ lookup('ansible.builtin.env', 'USER') }}"
-    mode: '0755'
+    mode: push
+    delete: true
+    archive: true
+    recursive: true
+
