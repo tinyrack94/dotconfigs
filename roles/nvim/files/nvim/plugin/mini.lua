@@ -110,6 +110,8 @@ require("mini.trailspace").setup({})
 -- session 개념 지원
 require("mini.sessions").setup({
   directory = vim.fn.stdpath("config") .. "/sessions",
+  autowrite = true,
+  autoread = true,
 })
 
 -- others

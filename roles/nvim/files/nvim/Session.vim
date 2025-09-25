@@ -9,25 +9,11 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
 endif
 let s:shortmess_save = &shortmess
 set shortmess+=aoO
-badd +75 plugin/cmp.lua
-badd +8 plugin/markdown.lua
-badd +1 plugin/trouble.lua
-badd +9 plugin/treesitter.lua
-badd +1 plugin/ai.lua
-badd +1 ~/.config/nvim/plugin/lsp.lua
-badd +15 ~/.config/nvim/plugin/theme.lua
-badd +1 plugin/git.lua
-badd +1 health://
-badd +24 ~/.config/nvim/plugin/mini.lua
-badd +1 mini-deps-snap
-badd +4 init.lua
-badd +3 .gitignore
-badd +76 /home/linuxbrew/.linuxbrew/Cellar/neovim/0.11.4/share/nvim/runtime/lua/vim/keymap.lua
-badd +1 plugin/configs.lua
-badd +2 plugin/keymap.lua
+badd +1 plugin/keymap.lua
+badd +1 plugin/lsp.lua
 argglobal
 %argdel
-edit ~/.config/nvim/plugin/mini.lua
+edit plugin/lsp.lua
 argglobal
 balt plugin/keymap.lua
 setlocal foldmethod=manual
@@ -40,12 +26,12 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 27 - ((23 * winheight(0) + 38) / 76)
+let s:l = 1 - ((0 * winheight(0) + 37) / 75)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 27
-normal! 012|
+keepjumps 1
+normal! 0
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
