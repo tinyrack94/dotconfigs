@@ -9,15 +9,23 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
 endif
 let s:shortmess_save = &shortmess
 set shortmess+=aoO
-badd +1 plugin/keymap.lua
-badd +33 plugin/lsp.lua
-badd +5 ~/.config/nvim/plugin/mini.lua
-badd +1 plugin/oil.lua
+badd +117 plugin/keymap.lua
+badd +34 plugin/lsp.lua
+badd +1 ~/.config/nvim/plugin/mini.lua
+badd +9 plugin/config.lua
+badd +1 plugin/format.lua
+badd +2 plugin/theme.lua
+badd +4 init.lua
+badd +6 plugin/treesitter.lua
+badd +5 plugin/lint.lua
+badd +5 ~/.config/nvim/plugin/snippets.lua
+badd +4 .vscode/settings.json
+badd +21 plugin/explorer.lua
 argglobal
 %argdel
-edit ~/.config/nvim/plugin/mini.lua
+edit plugin/keymap.lua
 argglobal
-balt plugin/lsp.lua
+balt plugin/format.lua
 setlocal foldmethod=manual
 setlocal foldexpr=v:lua.vim.treesitter.foldexpr()
 setlocal foldmarker={{{,}}}
@@ -28,11 +36,11 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 4 - ((3 * winheight(0) + 16) / 33)
+let s:l = 7 - ((6 * winheight(0) + 37) / 74)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 4
+keepjumps 7
 normal! 0
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'

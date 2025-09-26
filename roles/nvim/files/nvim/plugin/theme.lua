@@ -1,14 +1,7 @@
--- vim.pack.add({
---   "https://github.com/catppuccin/nvim.git"
--- })
---
--- vim.cmd.colorscheme "catppuccin-mocha"
---
---
---
+local add = MiniDeps.add
 
-vim.pack.add({
-  "https://github.com/projekt0n/github-nvim-theme.git"
+add({
+  source = "projekt0n/github-nvim-theme"
 })
 
 vim.cmd("colorscheme github_dark_default")

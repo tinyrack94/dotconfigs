@@ -11,6 +11,17 @@ require("mini.pairs").setup({})
 require("mini.move").setup({})
 
 -- 코드 자동 완성 제공
+local gen_loader = require("mini.snippets").gen_loader
+require("mini.snippets").setup({
+  snippets = {
+    -- Load custom file with global snippets first (adjust for Windows)
+    gen_loader.from_file("~/.config/nvim/snippets/global.json"),
+
+    -- Load snippets based on current language by reading files from
+    -- "snippets/" subdirectories from 'runtimepath' directories.
+    gen_loader.from_lang(),
+  },
+})
 require("mini.completion").setup({})
 
 -- 객체 쪼개기/나누기 지원
@@ -21,8 +32,6 @@ require("mini.bracketed").setup({})
 
 -- 버퍼 제거 시 레이아웃 유지
 require("mini.bufremove").setup({})
-
-require("mini.snippets").setup({})
 
 -- git diff
 local diff = require("mini.diff")
@@ -55,10 +64,6 @@ require("mini.jump2d").setup({})
 
 -- Pick 창 지원
 require("mini.pick").setup({})
-vim.keymap.set("n", "<leader>pf", "<cmd>Pick files<cr>", { desc = "Files" })
-vim.keymap.set("n", "<leader>pg", "<cmd>Pick grep_live<cr>", { desc = "Grep" })
-vim.keymap.set("n", "<leader>pb", "<cmd>Pick buffers<cr>", { desc = "Buffers" })
-vim.keymap.set("n", "<leader>pl", "<cmd>Pick buflines<cr>", { desc = "Buffer Lines" })
 
 -- 방문 히스토리 지원
 require("mini.visits").setup({})

@@ -1,5 +1,7 @@
-vim.pack.add({
-  "https://github.com/folke/lazydev.nvim.git",
+local add = MiniDeps.add
+
+add({
+  source = "folke/lazydev.nvim"
 })
 
 require("lazydev").setup({
@@ -9,83 +11,54 @@ require("lazydev").setup({
   },
 })
 
-vim.pack.add({
-  "https://github.com/mason-org/mason.nvim.git",
-})
-
-vim.pack.add({
-  "https://github.com/neovim/nvim-lspconfig.git",
-})
-
-vim.pack.add({
-  "https://github.com/mason-org/mason-lspconfig.nvim.git",
+add({
+  source = "mason-org/mason.nvim",
+  depends = {
+    "neovim/nvim-lspconfig",
+    "mason-org/mason-lspconfig.nvim"
+  }
 })
 
 require("mason").setup({})
 require("mason-lspconfig").setup({
   automatic_enable = true,
+  ensure_installed = {
+    -- common
+    "yamlls",
+    "bashls",
+    "jsonls",
+    "yamlls",
+    "gh_actions_ls",
+    "copilot",
+    "ansiblels",
+    "lua_ls",
+    "dockerls",
+    "docker_language_server",
+    "docker_compose_language_service",
+
+    -- web
+    "html",
+    "ts_ls",
+    "tailwindcss",
+    "cssls",
+    "astro",
+    "eslint",
+    "emmet_language_server",
+  },
 })
 
-vim.api.nvim_create_autocmd("LspAttach", {
-  group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+add({
+  source = "WhoIsSethDaniel/mason-tool-installer"
+})
 
-  callback = function(ev)
-    -- Enable completion triggered by <c-x><c-o>
-    vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
-
-    vim.keymap.set("n", "grod", vim.diagnostic.open_float, {
-      buffer = ev.buf,
-      desc = "Open Diagnostics",
-    })
-
-    vim.keymap.set("n", "gri", vim.lsp.buf.declaration, {
-      buffer = ev.buf,
-      desc = "Implementation",
-    })
-
-    vim.keymap.set("n", "grD", vim.lsp.buf.declaration, {
-      buffer = ev.buf,
-      desc = "Go to declaration",
-    })
-
-    vim.keymap.set("n", "grd", vim.lsp.buf.definition, {
-      buffer = ev.buf,
-      desc = "Go to definition",
-    })
-
-    vim.keymap.set("n", "grn", vim.lsp.buf.rename, {
-      buffer = ev.buf,
-      desc = "Rename",
-    })
-
-    vim.keymap.set("n", "grf", vim.lsp.buf.format, {
-      buffer = ev.buf,
-      desc = "Format Codes",
-    })
-
-    vim.keymap.set("n", "gre", "<cmd>LspEslintFixAll<CR>", {
-      buffer = ev.buf,
-      desc = "Eslint fix all",
-    })
-
-    vim.keymap.set("n", "gra", vim.lsp.buf.code_action, {
-      buffer = ev.buf,
-      desc = "Code Actions",
-    })
-
-    vim.keymap.set("n", "grr", vim.lsp.buf.references, {
-      buffer = ev.buf,
-      desc = "References",
-    })
-
-    vim.keymap.set("n", "grt", vim.lsp.buf.references, {
-      buffer = ev.buf,
-      desc = "Type Definition",
-    })
-
-    vim.keymap.set("n", "gros", vim.lsp.buf.signature_help, {
-      buffer = ev.buf,
-      desc = "Open Signature Help",
-    })
-  end,
+require('mason-tool-installer').setup({
+  ensure_installed = {
+    "eslint_d",
+    "prettierd",
+    "stylua",
+    "stylelint",
+    "ansible-lint",
+    "jsonlint",
+    "markdownlint"
+  }
 })

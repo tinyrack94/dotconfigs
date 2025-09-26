@@ -7,6 +7,12 @@ map_multistep("i", "<S-Tab>", { "pmenu_prev" })
 map_multistep("i", "<CR>", { "pmenu_accept", "minipairs_cr" })
 map_multistep("i", "<BS>", { "minipairs_bs" })
 
+vim.keymap.set("n", "<leader>pf", "<cmd>Pick files<cr>", { desc = "Files" })
+vim.keymap.set("n", "<leader>pg", "<cmd>Pick grep_live<cr>", { desc = "Grep" })
+vim.keymap.set("n", "<leader>pb", "<cmd>Pick buffers<cr>", { desc = "Buffers" })
+vim.keymap.set("n", "<leader>pl", "<cmd>Pick buflines<cr>", { desc = "Buffer Lines" })
+vim.keymap.set("n", "<leader>pc", "<cmd>Pick commands<cr>", { desc = "Commands" })
+vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle<cr>", { desc = "Toggle Explorer" })
 ---
 
 local map_combo = keymap.map_combo
@@ -75,8 +81,76 @@ miniclue.setup({
     { mode = "n", keys = "<Leader>p", desc = "+Pick" },
     { mode = "n", keys = "<Leader>f", desc = "+Files" },
     -- { mode = 'n', keys = '<Leader>d',  desc = '+Debug' },
-    { mode = "n", keys = "gro",       desc = "+Go to" },
+    { mode = "n", keys = "gro", desc = "+Go to" },
     { mode = "n", keys = "<Leader>t", desc = "+Troubles" },
     { mode = "n", keys = "<Leader>c", desc = "+CodeCompanion" },
   },
+})
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+  callback = function(ev)
+    -- Enable completion triggered by <c-x><c-o>
+    vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
+
+    vim.keymap.set("n", "grod", vim.diagnostic.open_float, {
+      buffer = ev.buf,
+      desc = "Open Diagnostics",
+    })
+
+    vim.keymap.set("n", "gri", vim.lsp.buf.declaration, {
+      buffer = ev.buf,
+      desc = "Implementation",
+    })
+
+    vim.keymap.set("n", "grD", vim.lsp.buf.declaration, {
+      buffer = ev.buf,
+      desc = "Go to declaration",
+    })
+
+    vim.keymap.set("n", "grd", vim.lsp.buf.definition, {
+      buffer = ev.buf,
+      desc = "Go to definition",
+    })
+
+    vim.keymap.set("n", "grn", vim.lsp.buf.rename, {
+      buffer = ev.buf,
+      desc = "Rename",
+    })
+
+    -- vim.keymap.set("n", "grf", vim.lsp.buf.format, {
+    --   buffer = ev.buf,
+    --   desc = "Format Codes",
+    -- })
+
+    vim.keymap.set("n", "grf", require("conform").format, {
+      buffer = ev.buf,
+      desc = "Format Codes",
+    })
+
+    -- vim.keymap.set("n", "gre", "<cmd>LspEslintFixAll<CR>", {
+    --   buffer = ev.buf,
+    --   desc = "Eslint fix all",
+    -- })
+
+    vim.keymap.set("n", "gra", vim.lsp.buf.code_action, {
+      buffer = ev.buf,
+      desc = "Code Actions",
+    })
+
+    vim.keymap.set("n", "grr", vim.lsp.buf.references, {
+      buffer = ev.buf,
+      desc = "References",
+    })
+
+    vim.keymap.set("n", "grt", vim.lsp.buf.references, {
+      buffer = ev.buf,
+      desc = "Type Definition",
+    })
+
+    vim.keymap.set("n", "gros", vim.lsp.buf.signature_help, {
+      buffer = ev.buf,
+      desc = "Open Signature Help",
+    })
+  end,
 })

@@ -1,5 +1,7 @@
-vim.pack.add({
-  "https://github.com/nvim-treesitter/nvim-treesitter.git",
+local add = MiniDeps.add
+
+add({
+  source = "nvim-treesitter/nvim-treesitter"
 })
 
 require('nvim-treesitter').setup({});
