@@ -1,3 +1,6 @@
+-- neovim 기본 설정 변경
+require("mini.basics").setup({})
+
 -- 주석 지원
 require("mini.comment").setup({})
 
@@ -13,14 +16,13 @@ require("mini.completion").setup({})
 -- 객체 쪼개기/나누기 지원
 require("mini.splitjoin").setup({})
 
--- neovim 기본 설정 변경
-require("mini.basics").setup({})
-
 -- bracket 단위 이동 지원
 require("mini.bracketed").setup({})
 
 -- 버퍼 제거 시 레이아웃 유지
 require("mini.bufremove").setup({})
+
+require("mini.snippets").setup({})
 
 -- git diff
 local diff = require("mini.diff")
@@ -115,5 +117,4 @@ require("mini.sessions").setup({
 })
 
 -- others
-require("mini.comment").setup({})
 require("mini.fuzzy").setup({})
