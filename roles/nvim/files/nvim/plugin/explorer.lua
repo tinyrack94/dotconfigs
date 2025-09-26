@@ -6,7 +6,7 @@ add({
   depends = {
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
-    "nvim-tree/nvim-web-devicons", -- optional, but recommended
+    "nvim-tree/nvim-web-devicons",
   },
 })
 

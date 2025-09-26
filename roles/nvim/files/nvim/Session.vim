@@ -8,24 +8,41 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 let s:shortmess_save = &shortmess
-set shortmess+=aoO
-badd +117 plugin/keymap.lua
+if &shortmess =~ 'A'
+  set shortmess=aoOA
+else
+  set shortmess=aoO
+endif
+badd +156 plugin/keymap.lua
 badd +34 plugin/lsp.lua
-badd +1 ~/.config/nvim/plugin/mini.lua
-badd +9 plugin/config.lua
+badd +16 ~/.config/nvim/plugin/mini.lua
+badd +12 plugin/config.lua
 badd +1 plugin/format.lua
 badd +2 plugin/theme.lua
 badd +4 init.lua
 badd +6 plugin/treesitter.lua
 badd +5 plugin/lint.lua
-badd +5 ~/.config/nvim/plugin/snippets.lua
+badd +1 ~/.config/nvim/plugin/snippets.lua
 badd +4 .vscode/settings.json
-badd +21 plugin/explorer.lua
+badd +22 plugin/explorer.lua
+badd +114 health://
+badd +15 plugin/completion.lua
+badd +5 plugin/copilot.lua
+badd +4 plugin/icons.lua
+badd +9 plugin/flash.lua
+badd +8 plugin/git.lua
 argglobal
 %argdel
-edit plugin/keymap.lua
+edit ~/.config/nvim/plugin/mini.lua
+wincmd t
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
 argglobal
-balt plugin/format.lua
+balt plugin/keymap.lua
 setlocal foldmethod=manual
 setlocal foldexpr=v:lua.vim.treesitter.foldexpr()
 setlocal foldmarker={{{,}}}
@@ -36,11 +53,11 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 7 - ((6 * winheight(0) + 37) / 74)
+let s:l = 16 - ((15 * winheight(0) + 37) / 74)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 7
+keepjumps 16
 normal! 0
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
@@ -49,6 +66,8 @@ endif
 unlet! s:wipebuf
 set winheight=1 winwidth=20
 let &shortmess = s:shortmess_save
+let &winminheight = s:save_winminheight
+let &winminwidth = s:save_winminwidth
 let s:sx = expand("<sfile>:p:r")."x.vim"
 if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)

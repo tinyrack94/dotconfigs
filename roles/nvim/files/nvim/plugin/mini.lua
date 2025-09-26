@@ -1,6 +1,8 @@
 -- neovim 기본 설정 변경
 require("mini.basics").setup({})
 
+require("mini.ai").setup({})
+
 -- 주석 지원
 require("mini.comment").setup({})
 
@@ -11,18 +13,18 @@ require("mini.pairs").setup({})
 require("mini.move").setup({})
 
 -- 코드 자동 완성 제공
-local gen_loader = require("mini.snippets").gen_loader
-require("mini.snippets").setup({
-  snippets = {
-    -- Load custom file with global snippets first (adjust for Windows)
-    gen_loader.from_file("~/.config/nvim/snippets/global.json"),
+-- local gen_loader = require("mini.snippets").gen_loader
+-- require("mini.snippets").setup({
+--   snippets = {
+--     -- Load custom file with global snippets first (adjust for Windows)
+--     gen_loader.from_file("~/.config/nvim/snippets/global.json"),
+--     -- Load snippets based on current language by reading files from
+--     -- "snippets/" subdirectories from 'runtimepath' directories.
+--     gen_loader.from_lang(),
+--   },
+-- })
 
-    -- Load snippets based on current language by reading files from
-    -- "snippets/" subdirectories from 'runtimepath' directories.
-    gen_loader.from_lang(),
-  },
-})
-require("mini.completion").setup({})
+-- require("mini.completion").setup({})
 
 -- 객체 쪼개기/나누기 지원
 require("mini.splitjoin").setup({})
@@ -71,13 +73,13 @@ require("mini.visits").setup({})
 ------------------------------ appearance
 
 -- icon 팩
-require("mini.icons").setup({})
+-- require("mini.icons").setup({})
 
--- local animate = require('mini.animate')
+-- local animate = require("mini.animate")
 -- -- animation 지원
 -- animate.setup({
 --   scroll = {
---     enable = false,
+--     enable = true,
 --   },
 -- })
 
