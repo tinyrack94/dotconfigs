@@ -82,8 +82,7 @@ miniclue.setup({
     { mode = "n", keys = "<Leader>f", desc = "+Files" },
     -- { mode = 'n', keys = '<Leader>d',  desc = '+Debug' },
     { mode = "n", keys = "gro", desc = "+Go to" },
-    { mode = "n", keys = "<Leader>t", desc = "+Troubles" },
-    { mode = "n", keys = "<Leader>c", desc = "+CodeCompanion" },
+    -- { mode = "n", keys = "<Leader>t", desc = "+Troubles" },
   },
 })
 
