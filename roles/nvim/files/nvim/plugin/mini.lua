@@ -3,9 +3,6 @@ require("mini.basics").setup({})
 
 require("mini.ai").setup({})
 
--- 주석 지원
-require("mini.comment").setup({})
-
 -- 괄호 자동 닫기 제공
 require("mini.pairs").setup({})
 
