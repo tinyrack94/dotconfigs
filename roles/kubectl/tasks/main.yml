@@ -3,7 +3,7 @@
     path: "{{ lookup('ansible.builtin.env', 'HOME') }}/.kube"
     state: directory
     owner: "{{ lookup('ansible.builtin.env', 'USER') }}"
-    group: "{{ lookup('ansible.builtin.env', 'USER') }}"
+    # group: "{{ lookup('ansible.builtin.env', 'USER') }}"
     mode: '0700'
 
 - name: Copy Kubectl Config
@@ -11,7 +11,7 @@
     src: "k3s.yaml"
     dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.kube/k3s.yaml"
     owner: "{{ lookup('ansible.builtin.env', 'USER') }}"
-    group: "{{ lookup('ansible.builtin.env', 'USER') }}"
+    # group: "{{ lookup('ansible.builtin.env', 'USER') }}"
     mode: '0644'
 
 - name: Tap a Homebrew repository, state present
@@ -41,7 +41,7 @@
     path: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config"
     state: directory
     owner: "{{ lookup('ansible.builtin.env', 'USER') }}"
-    group: "{{ lookup('ansible.builtin.env', 'USER') }}"
+    # group: "{{ lookup('ansible.builtin.env', 'USER') }}"
     mode: '0700'
 
 - name: Install Config Dir
@@ -49,5 +49,5 @@
     src: "kubectl-ai"
     dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config/"
     owner: "{{ lookup('ansible.builtin.env', 'USER') }}"
-    group: "{{ lookup('ansible.builtin.env', 'USER') }}"
+    # group: "{{ lookup('ansible.builtin.env', 'USER') }}"
     mode: '0755'

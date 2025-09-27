@@ -1,4 +1,5 @@
 - name: Uninstall apt tmux
+  when: ansible_os_family != 'Darwin'
   become: true
   ansible.builtin.apt:
     name: tmux
@@ -15,5 +16,5 @@
     src: .tmux.conf
     dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.tmux.conf"
     owner: "{{ lookup('ansible.builtin.env', 'USER') }}"
-    group: "{{ lookup('ansible.builtin.env', 'USER') }}"
+    # group: "{{ lookup('ansible.builtin.env', 'USER') }}"
     mode: '0644'

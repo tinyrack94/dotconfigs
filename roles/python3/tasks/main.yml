@@ -1,5 +1,6 @@
-- name: Install Python3
+- name: Install Python3 (Apt)
   become: true
+  when: ansible_os_family != 'Darwin'
   ansible.builtin.apt:
     name: "{{ item }}"
     state: present
@@ -7,3 +8,13 @@
     - python3
     - pipx
     - build-essential
+
+- name: Install Python3 (Brew)
+  become: false
+  when: ansible_os_family == 'Darwin'
+  community.general.homebrew:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - python
+    - pipx
