@@ -16,7 +16,7 @@ endif
 badd +6 plugin/keymap.lua
 badd +7 plugin/lsp.lua
 badd +1 plugin/mini.lua
-badd +15 plugin/config.lua
+badd +19 plugin/config.lua
 badd +1 plugin/format.lua
 badd +1 plugin/theme.lua
 badd +4 init.lua
@@ -30,12 +30,12 @@ badd +5 plugin/copilot.lua
 badd +8 plugin/git.lua
 badd +31 plugin/comment.lua
 badd +3 plugin/tmux.lua
-badd +1 plugin/trouble.lua
+badd +15 plugin/trouble.lua
 argglobal
 %argdel
-edit plugin/trouble.lua
+edit plugin/config.lua
 argglobal
-balt plugin/tmux.lua
+balt plugin/trouble.lua
 setlocal foldmethod=manual
 setlocal foldexpr=v:lua.vim.treesitter.foldexpr()
 setlocal foldmarker={{{,}}}
@@ -46,12 +46,12 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 14 - ((13 * winheight(0) + 29) / 59)
+let s:l = 19 - ((18 * winheight(0) + 29) / 59)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 14
-normal! 040|
+keepjumps 19
+normal! 031|
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
