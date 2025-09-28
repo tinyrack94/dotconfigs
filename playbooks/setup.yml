@@ -32,7 +32,7 @@
     # - dotconfig
     - role: gui-apps
       when: gui
-    - role: stow
+    # - role: stow
   tasks:
     - name: Print message
       ansible.builtin.debug:
