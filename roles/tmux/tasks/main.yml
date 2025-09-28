@@ -8,7 +8,7 @@
 - name: Install tmux
   community.general.homebrew:
     name: tmux
-    state: absent
+    state: present
   become: false
 
 - name: Install tmux conf
@@ -17,4 +17,4 @@
     dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.tmux.conf"
     owner: "{{ lookup('ansible.builtin.env', 'USER') }}"
     # group: "{{ lookup('ansible.builtin.env', 'USER') }}"
-    mode: '0644'
+    mode: "0644"
