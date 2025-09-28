@@ -51,15 +51,15 @@ sync_configs() {
 		ansible-vault encrypt "$HOME/.dotconfigs/roles/ssh/files/.ssh/winetree94_id_rsa.pub"
   )
 
-  # tmux
-  echo "sync tmux configs"
-  rsync -av \
-    "$HOME/.tmux.conf" "$HOME/.dotconfigs/roles/tmux/files/"
-
   # gitconfig
   echo "sync git configs"
   rsync -av \
     "$HOME/.gitconfig" "$HOME/.dotconfigs/roles/git/files/"
+
+  # tmux
+  echo "sync tmux configs"
+	rsync -av --delete \
+    "$HOME/.config/tmux/" "$HOME/.dotconfigs/roles/tmux/files/tmux/"
 
   # nvim
   echo "sync neovim configs"
