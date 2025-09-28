@@ -34,20 +34,18 @@ require("mini.bufremove").setup({})
 
 -- git diff
 local diff = require("mini.diff")
-diff.setup({
-  source = diff.gen_source.none(),
-})
+diff.setup({})
 
 -- buffer 내에서 파일 브라우징
 local mini_files = require("mini.files")
-mini_files.setup({})
-vim.keymap.set("n", "<leader>fo", mini_files.open, { desc = "Open Files" })
-vim.keymap.set("n", "<leader>fc", function()
-  local buf_name = vim.api.nvim_buf_get_name(0)
-  local path = vim.fn.filereadable(buf_name) == 1 and buf_name or vim.fn.getcwd()
-  MiniFiles.open(path)
-  MiniFiles.reveal_cwd()
-end, { desc = "Open Files (Current Path)" })
+mini_files.setup({
+  options = {
+    use_as_default_explorer = true,
+  },
+  windows = {
+    preview = false,
+  },
+})
 
 -- 유용한 도구 모음
 require("mini.extra").setup({})

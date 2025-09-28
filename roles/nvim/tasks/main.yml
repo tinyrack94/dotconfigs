@@ -22,6 +22,7 @@
     - ripgrep
     - lua
     - luarocks
+    - fd
 
 - name: Setup config dir
   ansible.builtin.file:
@@ -29,7 +30,7 @@
     state: directory
     owner: "{{ lookup('ansible.builtin.env', 'USER') }}"
     # group: "{{ lookup('ansible.builtin.env', 'USER') }}"
-    mode: '0700'
+    mode: "0700"
 
 - name: Install Nvim Config
   ansible.builtin.synchronize:
@@ -42,7 +43,6 @@
     # owner: "{{ lookup('ansible.builtin.env', 'USER') }}"
     # group: "{{ lookup('ansible.builtin.env', 'USER') }}"
     # mode: '0755'
-
 # - name: Install Nvim Config
 #   ansible.posix.synchronize:
 #     src: "nvim"

@@ -13,30 +13,29 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +50 plugin/keymap.lua
-badd +1 plugin/lsp.lua
-badd +12 ~/.config/nvim/plugin/mini.lua
+badd +6 plugin/keymap.lua
+badd +7 plugin/lsp.lua
+badd +1 plugin/mini.lua
 badd +15 plugin/config.lua
 badd +1 plugin/format.lua
-badd +2 plugin/theme.lua
+badd +1 plugin/theme.lua
 badd +4 init.lua
 badd +6 plugin/treesitter.lua
-badd +8 plugin/lint.lua
-badd +1 ~/.config/nvim/plugin/snippets.lua
+badd +7 plugin/lint.lua
+badd +1 plugin/snippets.lua
 badd +4 .vscode/settings.json
-badd +24 plugin/explorer.lua
-badd +114 health://
+badd +25 plugin/explorer.lua
 badd +21 plugin/completion.lua
 badd +5 plugin/copilot.lua
-badd +4 plugin/icons.lua
-badd +9 plugin/flash.lua
 badd +8 plugin/git.lua
-badd +5 plugin/comment.lua
+badd +31 plugin/comment.lua
+badd +3 plugin/tmux.lua
+badd +1 plugin/trouble.lua
 argglobal
 %argdel
-edit plugin/keymap.lua
+edit plugin/trouble.lua
 argglobal
-balt plugin/explorer.lua
+balt plugin/tmux.lua
 setlocal foldmethod=manual
 setlocal foldexpr=v:lua.vim.treesitter.foldexpr()
 setlocal foldmarker={{{,}}}
@@ -47,12 +46,12 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 139 - ((54 * winheight(0) + 30) / 60)
+let s:l = 14 - ((13 * winheight(0) + 29) / 59)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 139
-normal! 0
+keepjumps 14
+normal! 040|
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

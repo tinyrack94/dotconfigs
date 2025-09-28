@@ -1,6 +1,15 @@
 -- 스마트 단축키 지원
 local keymap = require("mini.keymap")
 
+local mini_files = require("mini.files")
+vim.keymap.set("n", "<leader>fo", mini_files.open, { desc = "Open Files" })
+vim.keymap.set("n", "<leader>fc", function()
+  local buf_name = vim.api.nvim_buf_get_name(0)
+  local path = vim.fn.filereadable(buf_name) == 1 and buf_name or vim.fn.getcwd()
+  MiniFiles.open(path)
+  MiniFiles.reveal_cwd()
+end, { desc = "Open Files (Current Path)" })
+
 local map_multistep = keymap.map_multistep
 map_multistep("i", "<Tab>", { "pmenu_next" })
 map_multistep("i", "<S-Tab>", { "pmenu_prev" })
@@ -8,11 +17,17 @@ map_multistep("i", "<CR>", { "pmenu_accept", "minipairs_cr" })
 map_multistep("i", "<BS>", { "minipairs_bs" })
 
 vim.keymap.set("n", "<leader>pf", "<cmd>Pick files<cr>", { desc = "Files" })
-vim.keymap.set("n", "<leader>pg", "<cmd>Pick grep_live<cr>", { desc = "Grep" })
+vim.keymap.set("n", "<leader>pG", "<cmd>Pick grep_live<cr>", { desc = "Grep" })
 vim.keymap.set("n", "<leader>pb", "<cmd>Pick buffers<cr>", { desc = "Buffers" })
-vim.keymap.set("n", "<leader>pl", "<cmd>Pick buflines<cr>", { desc = "Buffer Lines" })
+vim.keymap.set("n", "<leader>pl", "<cmd>Pick buf_lines<cr>", { desc = "Buffer Lines" })
 vim.keymap.set("n", "<leader>pc", "<cmd>Pick commands<cr>", { desc = "Commands" })
+vim.keymap.set("n", "<leader>pk", "<cmd>Pick keymaps<cr>", { desc = "Keymaps" })
 vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle<cr>", { desc = "Toggle Explorer" })
+
+vim.keymap.set("n", "<leader>pgc", "<cmd>Pick git_commits<cr>", { desc = "Commits" })
+vim.keymap.set("n", "<leader>pgb", "<cmd>Pick git_branches<cr>", { desc = "Branches" })
+vim.keymap.set("n", "<leader>pgf", "<cmd>Pick git_files<cr>", { desc = "Files" })
+vim.keymap.set("n", "<leader>pgf", "<cmd>Pick git_hunks<cr>", { desc = "Hunks" })
 ---
 
 local map_combo = keymap.map_combo
@@ -31,6 +46,9 @@ map_combo("t", "kj", "<BS><BS><C-\\><C-n>")
 -- 명령어 도움말 제공
 local miniclue = require("mini.clue")
 miniclue.setup({
+  window = {
+    delay = 0,
+  },
   triggers = {
     -- Leader triggers
     { mode = "n", keys = "<Leader>" },
@@ -80,7 +98,9 @@ miniclue.setup({
     -- { mode = 'n', keys = '<Leader>a',  desc = '+AI' },
     { mode = "n", keys = "<Leader>p", desc = "+Pick" },
     { mode = "n", keys = "<Leader>f", desc = "+Files" },
+    { mode = "n", keys = "<Leader>x", desc = "+Troubles" },
     -- { mode = 'n', keys = '<Leader>d',  desc = '+Debug' },
+    { mode = "n", keys = "<leader>pg", desc = "+Git" },
     { mode = "n", keys = "gro", desc = "+Go to" },
     -- { mode = "n", keys = "<Leader>t", desc = "+Troubles" },
   },
