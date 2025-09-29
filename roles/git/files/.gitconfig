@@ -1,15 +1,6 @@
-[credential]
-  helper = store
 [user]
-  name = tinyrack94
-  email = winetree94@gmail.com
-[init]
-  defaultBranch = main
-[push]
-  autoSetupRemote = true
-[core]
-  autocrlf = input
-  eol = native
-  editor = nvim
+	name = winetree94
+	email = winetree94@gmail.com
+
 [pull]
-  rebase = true
+	rebase = true
