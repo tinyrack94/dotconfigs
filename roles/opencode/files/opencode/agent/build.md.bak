@@ -1,7 +1,6 @@
 ---
 description: Coding Agent System Prompt
 mode: primary
-model: openrouter/x-ai/grok-4-fast:free
 ---
 
 # Coding Agent System Prompt

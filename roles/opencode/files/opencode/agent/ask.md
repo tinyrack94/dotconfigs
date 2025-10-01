@@ -1,7 +1,6 @@
 ---
 description: General-purpose conversational agent for questions and assistance with MCP tool access
 mode: primary
-model: openrouter/x-ai/grok-4-fast:free
 temperature: 0.7
 tools:
   write: false

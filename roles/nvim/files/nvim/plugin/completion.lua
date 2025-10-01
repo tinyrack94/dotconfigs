@@ -9,13 +9,12 @@ add({
 })
 
 require("blink.cmp").setup({
-  keymap = {
-    -- ["<Enter>"] = { "select_and_accept", "fallback" },
-  },
-
   completion = {
     documentation = {
       auto_show = true,
+    },
+    trigger = {
+      show_on_insert_on_trigger_character = true,
     },
   },
 })
