@@ -106,7 +106,7 @@ require("mini.starter").setup({})
 require("mini.statusline").setup({})
 
 -- buffer 탭 지원
-require("mini.tabline").setup({})
+-- require("mini.tabline").setup({})
 
 -- trailspace 표시 지원
 require("mini.trailspace").setup({})

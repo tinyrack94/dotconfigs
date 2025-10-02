@@ -1,3 +1,4 @@
+local add = MiniDeps.add
 -- 스마트 단축키 지원
 local keymap = require("mini.keymap")
 
@@ -101,7 +102,6 @@ miniclue.setup({
     { mode = "n", keys = "<Leader>p", desc = "+Pick" },
     { mode = "n", keys = "<Leader>f", desc = "+Files" },
     { mode = "n", keys = "<Leader>x", desc = "+Troubles" },
-    -- { mode = 'n', keys = '<Leader>d',  desc = '+Debug' },
     { mode = "n", keys = "<leader>pg", desc = "+Git" },
     { mode = "n", keys = "gro", desc = "+Go to" },
     -- { mode = "n", keys = "<Leader>t", desc = "+Troubles" },
@@ -175,3 +175,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
     })
   end,
 })
+
+-- add({
+--   source = "folke/which-key.nvim",
+-- })
+--
+-- require("which-key").setup({})
