@@ -23,10 +23,6 @@ vim.keymap.set("n", "<leader>pb", "<cmd>Pick buffers<cr>", { desc = "Buffers" })
 vim.keymap.set("n", "<leader>pl", "<cmd>Pick buf_lines<cr>", { desc = "Buffer Lines" })
 vim.keymap.set("n", "<leader>pc", "<cmd>Pick commands<cr>", { desc = "Commands" })
 vim.keymap.set("n", "<leader>pk", "<cmd>Pick keymaps<cr>", { desc = "Keymaps" })
-vim.keymap.set("n", "<leader>e", function()
-  Snacks.explorer()
-end, { desc = "Toggle Explorer" })
-
 vim.keymap.set("n", "<leader>pgc", "<cmd>Pick git_commits<cr>", { desc = "Commits" })
 vim.keymap.set("n", "<leader>pgb", "<cmd>Pick git_branches<cr>", { desc = "Branches" })
 vim.keymap.set("n", "<leader>pgf", "<cmd>Pick git_files<cr>", { desc = "Files" })
@@ -124,25 +120,20 @@ vim.api.nvim_create_autocmd("LspAttach", {
       desc = "Implementation",
     })
 
-    vim.keymap.set("n", "grD", vim.lsp.buf.declaration, {
-      buffer = ev.buf,
-      desc = "Go to declaration",
-    })
-
     vim.keymap.set("n", "grd", vim.lsp.buf.definition, {
       buffer = ev.buf,
       desc = "Go to definition",
+    })
+
+    vim.keymap.set("n", "grD", vim.lsp.buf.declaration, {
+      buffer = ev.buf,
+      desc = "Go to declaration",
     })
 
     vim.keymap.set("n", "grn", vim.lsp.buf.rename, {
       buffer = ev.buf,
       desc = "Rename",
     })
-
-    -- vim.keymap.set("n", "grf", vim.lsp.buf.format, {
-    --   buffer = ev.buf,
-    --   desc = "Format Codes",
-    -- })
 
     vim.keymap.set("n", "grf", require("conform").format, {
       buffer = ev.buf,
