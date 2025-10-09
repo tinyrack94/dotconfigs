@@ -13,7 +13,7 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +125 plugin/keymap.lua
+badd +8 plugin/keymap.lua
 badd +1 plugin/lsp.lua
 badd +96 plugin/mini.lua
 badd +13 plugin/config.lua
@@ -25,7 +25,7 @@ badd +7 plugin/lint.lua
 badd +1 plugin/snippets.lua
 badd +4 .vscode/settings.json
 badd +25 plugin/explorer.lua
-badd +17 plugin/completion.lua
+badd +22 plugin/completion.lua
 badd +5 plugin/copilot.lua
 badd +8 plugin/git.lua
 badd +1 plugin/comment.lua
@@ -35,9 +35,9 @@ badd +5 plugin/icons.lua
 badd +5 plugin/snacks.lua
 argglobal
 %argdel
-edit plugin/keymap.lua
+edit plugin/completion.lua
 argglobal
-balt plugin/completion.lua
+balt plugin/lsp.lua
 setlocal foldmethod=manual
 setlocal foldexpr=v:lua.vim.treesitter.foldexpr()
 setlocal foldmarker={{{,}}}
@@ -48,12 +48,12 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 127 - ((39 * winheight(0) + 41) / 82)
+let s:l = 23 - ((22 * winheight(0) + 36) / 72)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 127
-normal! 0
+keepjumps 23
+normal! 038|
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
