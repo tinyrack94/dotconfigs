@@ -53,7 +53,7 @@ add({
 
 require("mason-tool-installer").setup({
   ensure_installed = {
-    "eslint_d",
+    "eslint",
     "prettierd",
     "stylua",
     "stylelint",
