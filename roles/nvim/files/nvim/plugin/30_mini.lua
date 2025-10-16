@@ -301,9 +301,6 @@ later(function()
       { mode = 'n', keys = 'z' },        -- `z` key
       { mode = 'x', keys = 'z' },
     },
-    window = {
-      delay = 0
-    }
   })
 end)
 

@@ -33,10 +33,6 @@ require("gitsigns").setup({
 	current_line_blame = true,
 })
 
-add({
-	source = "github/copilot.vim",
-})
-
 -- Tree-sitter ================================================================
 
 -- Tree-sitter is a tool for fast incremental parsing. It converts text into
@@ -281,3 +277,11 @@ require("mason-tool-installer").setup({
 add({
 	source = "christoomey/vim-tmux-navigator",
 })
+
+add({
+	source = "github/copilot.vim",
+})
+
+-- Copilot configuration
+vim.g.copilot_no_tab_map = true
+vim.g.copilot_assume_mapped = true
