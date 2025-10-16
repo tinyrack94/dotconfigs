@@ -1,9 +1,0 @@
-{
-  "Lua.runtime.version": "LuaJIT",
-  "Lua.diagnostics.globals": ["vim"],
-  "Lua.workspace.library": [
-    "/home/linuxbrew/.linuxbrew/bin/nvim/runtime/lua",
-    "/home/linuxbrew/.linuxbrew/bin/nvim/runtime/lua/vim",
-    "/home/linuxbrew/.linuxbrew/bin/nvim/runtime/lua/vim/lsp"
-  ]
-}
