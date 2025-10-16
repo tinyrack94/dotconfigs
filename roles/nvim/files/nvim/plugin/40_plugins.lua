@@ -14,11 +14,16 @@
 local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
 local now_if_args = vim.fn.argc(-1) > 0 and now or later
 
--- add({
--- 	source = "projekt0n/github-nvim-theme",
--- })
---
--- vim.cmd("colorscheme github_dark_default")
+add({
+	source = "catppuccin/nvim",
+	name = "catppuccin",
+})
+
+add({
+	source = "projekt0n/github-nvim-theme",
+})
+
+vim.cmd("colorscheme catppuccin-mocha")
 
 add({
 	source = "lewis6991/gitsigns.nvim",
