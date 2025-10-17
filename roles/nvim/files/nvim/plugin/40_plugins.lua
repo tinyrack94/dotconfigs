@@ -277,11 +277,3 @@ require("mason-tool-installer").setup({
 add({
 	source = "christoomey/vim-tmux-navigator",
 })
-
-add({
-	source = "github/copilot.vim",
-})
-
--- Copilot configuration
-vim.g.copilot_no_tab_map = true
-vim.g.copilot_assume_mapped = true
