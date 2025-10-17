@@ -24,16 +24,24 @@ later(function()
 		suggestion = {
 			enabled = true,
 			auto_trigger = true,
-			keymap = {
-				accept = "<M-y>",
-				accept_word = false,
-				accept_line = false,
-				next = "<M-]>",
-				prev = "<M-[>",
-				dismiss = "<C-]>",
-			},
+			-- 왜 안되지?
+			-- keymap = {
+			-- 	accept = "<M-y>",
+			-- 	accept_word = false,
+			-- 	accept_line = false,
+			-- 	next = "<M-]>",
+			-- 	prev = "<M-[>",
+			-- 	dismiss = "<C-]>",
+			-- },
 		},
 	})
+
+	-- Keymaps for copilot suggestion
+	local suggestion = require("copilot.suggestion")
+	vim.keymap.set("i", "<M-y>", suggestion.accept)
+	vim.keymap.set("i", "<M-]>", suggestion.next)
+	vim.keymap.set("i", "<M-[>", suggestion.prev)
+
 	--
 	-- require("copilot_cmp").setup()
 	--
@@ -126,6 +134,14 @@ later(function()
 		}),
 		matching = { disallow_symbol_nonprefix_matching = false },
 	})
+
+	cmp.event:on("menu_opened", function()
+		vim.b.copilot_suggestion_hidden = true
+	end)
+
+	cmp.event:on("menu_closed", function()
+		vim.b.copilot_suggestion_hidden = false
+	end)
 
 	-- Set up lspconfig.
 	-- local capabilities = require("cmp_nvim_lsp").default_capabilities()
