@@ -16,13 +16,14 @@
 -- reading. Consider preserving this or remove `-- stylua` lines to autoformat.
 
 -- General ====================================================================
-vim.g.mapleader = ' ' -- Use `<Space>` as <Leader> key
-
+-- vim.g.clipboard = 'unamedplus'
+-- vim.g.clipboard   = 'wayclip'
+vim.g.clipboard   = 'tmux'
+vim.g.mapleader   = ' ' -- Use `<Space>` as <Leader> key
 vim.o.mouse       = 'a'            -- Enable mouse
 vim.o.mousescroll = 'ver:25,hor:6' -- Customize mouse scroll
 vim.o.switchbuf   = 'usetab'       -- Use already opened buffers when switching
 vim.o.undofile    = true           -- Enable persistent undo
-
 vim.o.shada = "'100,<50,s10,:1000,/100,@100,h" -- Limit ShaDa file (for startup)
 
 -- Enable all filetype plugins and syntax (if not enabled, for better startup)
