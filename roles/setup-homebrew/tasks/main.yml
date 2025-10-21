@@ -13,18 +13,20 @@
     path: /home/linuxbrew/.linuxbrew/bin
   register: brew_check
 
-- name: Download Linuxbrew installation script
-  ansible.builtin.get_url:
-    url: https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
-    dest: /tmp/brew_install.sh
-    mode: '0755'
+- name: Password prompter setting
+  ansible.builtin.shell: echo "#!/bin/sh\n\necho $SUDO_PASSWORD" > ~/pw.sh && chmod +x ~/pw.sh
+  environment:
+    SUDO_PASSWORD: "{{ ansible_become_password }}"
   when: not (brew_check.stat.exists and brew_check.stat.isdir)
 
 - name: Install Linuxbrew
-  ansible.builtin.command: /tmp/brew_install.sh
-  environment:
-    NONINTERACTIVE: "1"
-    HOMEBREW_PREFIX: "{{ ansible_user_dir }}/.brew"
+  ansible.builtin.shell: SUDO_ASKPASS=~/pw.sh NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   register: brew_install_result
   changed_when: "'Installation successful!' in brew_install_result.stdout"
   when: not (brew_check.stat.exists and brew_check.stat.isdir)
+
+- name: Password prompter removal
+  ansible.builtin.shell: stat ~/pw.sh && rm ~/pw.sh
+  when:
+    - not (brew_check.stat.exists and brew_check.stat.isdir)
+    - "'Installation successful!' in brew_install_result.stdout"
